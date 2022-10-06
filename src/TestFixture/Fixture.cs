@@ -24,9 +24,9 @@ public sealed class Fixture
 
     private void Register(ContainerBuilder containerBuilder)
     {
-        containerBuilder.RegisterInstance(new Random()).AsSelf().SingleInstance();
-        containerBuilder.Register(x => x.Resolve<Random>().Next()).AsSelf().InstancePerDependency();
-        containerBuilder.Register(x => Guid.NewGuid()).AsSelf().InstancePerDependency();
+        containerBuilder.RegisterInstance(new Random()).SingleInstance();
+        containerBuilder.Register((Random random) => random.Next()).InstancePerDependency();
+        containerBuilder.Register(x => Guid.NewGuid()).InstancePerDependency();
     }
 
     public T Create<T>()
