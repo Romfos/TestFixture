@@ -29,7 +29,7 @@ public sealed class Fixture
         containerBuilder.Register(x => Guid.NewGuid()).InstancePerDependency();
     }
 
-    public T Create<T>()
+    public T Create<T>() where T : notnull
     {
         return container.Resolve<T>();
     }
