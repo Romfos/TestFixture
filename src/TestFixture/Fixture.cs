@@ -1,36 +1,50 @@
-using Autofac;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using TestFixture.Factories;
 
 namespace TestFixture;
 
 public sealed class Fixture
 {
-    private readonly IContainer container;
+    private readonly IFactory[] factories;
 
     public Fixture()
     {
-        var containerBuilder = new ContainerBuilder();
-        Register(containerBuilder);
-        container = containerBuilder.Build();
+        var factoryType = typeof(IFactory);
+        factories = GetType().Assembly.GetTypes()
+            .Where(x => x.IsClass && !x.IsAbstract && !x.IsGenericType)
+            .Where(x => factoryType.IsAssignableFrom(x))
+            .Select(x => Activator.CreateInstance(x))
+            .Cast<IFactory>()
+            .ToArray();
     }
 
-    public Fixture(Action<ContainerBuilder> builder)
+    public Fixture(IEnumerable<IFactory> factories) : this()
     {
-        var containerBuilder = new ContainerBuilder();
-        Register(containerBuilder);
-        builder(containerBuilder);
-        container = containerBuilder.Build();
+        this.factories = this.factories.Concat(factories).ToArray();
     }
 
-    private void Register(ContainerBuilder containerBuilder)
+    public T? Create<T>()
     {
-        containerBuilder.RegisterInstance(new Random()).SingleInstance();
-        containerBuilder.Register((Random random) => random.Next()).InstancePerDependency();
-        containerBuilder.Register(x => Guid.NewGuid()).InstancePerDependency();
+        if (TryCreate(typeof(T), out var value))
+        {
+            return (T)value!;
+        }
+        return default;
     }
 
-    public T Create<T>() where T : notnull
+    internal bool TryCreate(Type type, out object? value)
     {
-        return container.Resolve<T>();
+        foreach (var factory in factories)
+        {
+            if (factory.TryCreate(this, type, out value))
+            {
+                return true;
+            }
+        }
+
+        value = default;
+        return false;
     }
 }

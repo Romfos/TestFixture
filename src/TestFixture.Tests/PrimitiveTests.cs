@@ -19,4 +19,10 @@ public sealed class PrimitiveTests
     {
         fixture.Create<Guid>();
     }
+
+    [TestMethod]
+    public void String()
+    {
+        fixture.Create<string>();
+    }
 }
