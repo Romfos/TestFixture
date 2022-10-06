@@ -4,7 +4,7 @@ using System;
 namespace TestFixture.Tests;
 
 [TestClass]
-public sealed class PrimitiveTests
+public sealed class PrimitiveTypesFactoryTests
 {
     private readonly Fixture fixture = new Fixture();
 
