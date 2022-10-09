@@ -17,23 +17,33 @@ internal sealed class DefaultClassFactory : IFactory
 
     public object Create(Fixture fixture)
     {
-        var parameters = constructorInfo.GetParameters()
+        var target = constructorInfo.Invoke(ResolveParameters(););
+        ResolveProperties(target);
+        ResolveFields(target);
+        return target;
+    }
+    
+    private object[] ResolveParameters()
+    {
+        return constructorInfo.GetParameters()
             .Select(x => fixture.Create(x.ParameterType))
             .ToArray();
-
-        var target = constructorInfo.Invoke(parameters);
-
+    }
+    
+    private void ResolveProperties(object target)
+    {
         foreach (var property in type.GetProperties().Where(x => x.CanWrite))
         {
             property.SetValue(target, fixture.Create(property.PropertyType!));
         }
-
+    }
+    
+    private void ResolveFields(object target)
+    {
         foreach (var field in type.GetFields().Where(x => x.IsPublic))
         {
             field.SetValue(target, fixture.Create(field.FieldType!));
         }
-
-        return target;
     }
 }
 
