@@ -8,11 +8,19 @@ internal sealed class CollectionsFactoryProvider : IFactoryProvider
 {
     public IFactory? Resolve(Type type)
     {
+        var factoryType = GetFactoryType(type);
+        if (factoryType == null)
+        {
+            return null;
+        }
+        return (IFactory)Activator.CreateInstance(factoryType)!;
+    }
+
+    private Type? GetFactoryType(Type type)
+    {
         if (type.IsArray)
         {
-            var elementType = type.GetElementType()!;
-            var factoryType = typeof(ArrayFactory<>).MakeGenericType(elementType);
-            return (IFactory)Activator.CreateInstance(factoryType)!;
+            return GetSingleArgumentFactoryType(type, type.GetElementType()!);
         }
 
         if (type.IsGenericType)
@@ -20,19 +28,23 @@ internal sealed class CollectionsFactoryProvider : IFactoryProvider
             var arguments = type.GetGenericArguments();
             if (arguments.Length == 1)
             {
-                return SingleArgumentFactory(type, arguments[0]);
+                return GetSingleArgumentFactoryType(type, arguments[0]);
             }
         }
 
         return null;
     }
 
-    private IFactory? SingleArgumentFactory(Type type, Type argument)
+    private Type? GetSingleArgumentFactoryType(Type type, Type argument)
     {
+        if (type.IsArray && type.GetArrayRank() == 1)
+        {
+            return typeof(ArrayFactory<>).MakeGenericType(argument);
+        }
+
         if (type == typeof(List<>).MakeGenericType(argument))
         {
-            var factoryType = typeof(ListFactory<>).MakeGenericType(argument);
-            return (IFactory)Activator.CreateInstance(factoryType)!;
+            return typeof(ListFactory<>).MakeGenericType(argument);
         }
 
         return null;
