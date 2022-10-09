@@ -6,5 +6,8 @@ internal sealed class Int32Factory : IFactory
 {
     private readonly Random random = new();
 
-    public object Create(Fixture fixture) => random.Next();
+    public object Create(Fixture fixture)
+    {
+        return random.Next();
+    }
 }

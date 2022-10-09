@@ -10,11 +10,11 @@ internal sealed class PrimitiveTypesFactoryProvider : IFactoryProvider
     private readonly StringFactory stringFactory = new();
 
     public IFactory? Resolve(Type type)
-    {  
+    {
         if (type == typeof(int))
         {
             return int32Factory;
-        }   
+        }
         if (type == typeof(Guid))
         {
             return guidFactory;
