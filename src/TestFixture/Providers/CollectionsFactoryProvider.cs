@@ -18,12 +18,21 @@ internal sealed class CollectionsFactoryProvider : IFactoryProvider
         if (type.IsGenericType)
         {
             var arguments = type.GetGenericArguments();
-
-            if (arguments.Length == 1 && type == typeof(List<>).MakeGenericType(arguments[0]))
+            if (arguments.Length == 1)
             {
-                var factoryType = typeof(ListFactory<>).MakeGenericType(arguments[0]);
-                return (IFactory)Activator.CreateInstance(factoryType)!;
+                return SingleArgumentFactory(type, arguments[0]);
             }
+        }
+
+        return null;
+    }
+
+    private IFactory? SingleArgumentFactory(Type type, Type argument)
+    {
+        if (type == typeof(List<>).MakeGenericType(argument))
+        {
+            var factoryType = typeof(ListFactory<>).MakeGenericType(argument);
+            return (IFactory)Activator.CreateInstance(factoryType)!;
         }
 
         return null;
