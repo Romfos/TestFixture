@@ -19,8 +19,8 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: pack
+      - name: Pack nuget package
         run: dotnet pack ./src/TestFixture.sln -p:Configuration=Release -p:Version=${{ inputs.Version }} -o "./build"
 
-      - name: push to nuget
-        run: dotnet nuget push ./build/*.nupkg -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
+      - name: Push to nuget
+        run: dotnet nuget push .\build\*.nupkg -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
