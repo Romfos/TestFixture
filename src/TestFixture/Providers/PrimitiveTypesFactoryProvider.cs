@@ -1,4 +1,5 @@
 using System;
+using TestFixture.Factories.Primitives;
 using TestFixture.Providers;
 
 namespace TestFixture.Factories;
