@@ -7,6 +7,13 @@
     <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Authors>Romfos</Authors>
+    <Description>Fixture library for unit testing</Description>
+    <PackageTags>Tests Fixture</PackageTags>
+    <PackageProjectUrl>https://github.com/Romfos/TestFixture</PackageProjectUrl>
+  </PropertyGroup>  
+
   <ItemGroup Condition=" '$(TargetFramework)' != 'net6.0' ">
     <PackageReference Include="System.Collections.Immutable" Version="6.0.0" />
   </ItemGroup>
