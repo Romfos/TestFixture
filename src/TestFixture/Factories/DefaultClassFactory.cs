@@ -23,14 +23,14 @@ internal sealed class DefaultClassFactory : IFactory
         ResolveFields(fixture, target);
         return target;
     }
-    
+
     private object[] ResolveParameters(Fixture fixture)
     {
         return constructorInfo.GetParameters()
             .Select(x => fixture.Create(x.ParameterType))
             .ToArray();
     }
-    
+
     private void ResolveProperties(Fixture fixture, object target)
     {
         foreach (var property in type.GetProperties().Where(x => x.CanWrite))
@@ -38,7 +38,7 @@ internal sealed class DefaultClassFactory : IFactory
             property.SetValue(target, fixture.Create(property.PropertyType!));
         }
     }
-    
+
     private void ResolveFields(Fixture fixture, object target)
     {
         foreach (var field in type.GetFields().Where(x => x.IsPublic))
@@ -47,4 +47,3 @@ internal sealed class DefaultClassFactory : IFactory
         }
     }
 }
-
