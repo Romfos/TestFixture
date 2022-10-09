@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TestFixture.Factories.Collections;
 using TestFixture.Providers;
 
 namespace TestFixture.Factories;

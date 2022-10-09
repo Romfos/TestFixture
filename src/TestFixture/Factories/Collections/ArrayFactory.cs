@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace TestFixture.Factories;
+namespace TestFixture.Factories.Collections;
 
 internal sealed class ArrayFactory<T> : IFactory
 {

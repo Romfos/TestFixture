@@ -1,6 +1,6 @@
 using System;
 
-namespace TestFixture.Factories;
+namespace TestFixture.Factories.Primitives;
 
 internal sealed class Int32Factory : IFactory
 {
