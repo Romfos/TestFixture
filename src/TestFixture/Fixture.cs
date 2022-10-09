@@ -48,7 +48,7 @@ public sealed class Fixture
     {
         var factory = factories.GetOrAdd(type, _ => providers
             .Select(provider => provider.Resolve(type))
-            .FirstOrDefault(x => x != null) ?? throw new Exception($"Unable to create fixture for {type.FullName}"));
+            .FirstOrDefault(x => x != null) ?? new DefaultClassFactory(type));
 
         return factory.Create(this);
     }
