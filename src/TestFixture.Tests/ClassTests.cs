@@ -10,7 +10,7 @@ public sealed class ClassTests
     private class Class1
     {
         public Class1(int A, string B)
-        { 
+        {
         }
     }
 
@@ -23,12 +23,12 @@ public sealed class ClassTests
     private class Class2
     {
         public Class2(int A, string B)
-        { 
+        {
         }
 
 
         public Class2(int A)
-        { 
+        {
         }
     }
 
@@ -41,14 +41,14 @@ public sealed class ClassTests
     private class Class3
     {
         public Class3(int A, Class4 nestedClass)
-        { 
+        {
         }
     }
 
     private class Class4
     {
         public Class4(int A)
-        { 
+        {
         }
     }
 

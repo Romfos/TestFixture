@@ -23,12 +23,12 @@ internal sealed class DefaultClassFactory : IFactory
 
         var target = constructorInfo.Invoke(parameters);
 
-        foreach(var property in type.GetProperties().Where(x => x.CanWrite))
+        foreach (var property in type.GetProperties().Where(x => x.CanWrite))
         {
             property.SetValue(target, fixture.Create(property.PropertyType!));
         }
 
-        foreach(var field in type.GetFields().Where(x => x.IsPublic))
+        foreach (var field in type.GetFields().Where(x => x.IsPublic))
         {
             field.SetValue(target, fixture.Create(field.FieldType!));
         }
