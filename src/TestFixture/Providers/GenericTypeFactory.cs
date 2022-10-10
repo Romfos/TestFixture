@@ -19,9 +19,9 @@ public sealed class GenericTypeFactoryProvider : IFactoryProvider
         if (type.IsGenericType)
         {
             var arguments = type.GetGenericArguments();
-            if (arguments.Length == 1 && type == baseType.MakeGenericType(arguments[0]))
+            if (type == baseType.MakeGenericType(arguments))
             {
-                var factoryType = factoryBaseType.MakeGenericType(arguments[0]);
+                var factoryType = factoryBaseType.MakeGenericType(arguments);
                 return Activator.CreateInstance(factoryType) as IFactory;
             }
         }
