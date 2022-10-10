@@ -30,7 +30,7 @@ public sealed class Fixture
 
     public Fixture(IEnumerable<IFactoryProvider> customfactoryProviders)
     {
-        providers = defaultFactoryProviders.Concat(customfactoryProviders).ToArray();
+        providers = customfactoryProviders.Concat(defaultFactoryProviders).ToArray();
     }
 
     public T Create<T>()
