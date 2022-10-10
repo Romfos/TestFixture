@@ -3,12 +3,12 @@ using TestFixture.Factories;
 
 namespace TestFixture.Providers;
 
-public sealed class GenericTypeFactory : IFactoryProvider
+public sealed class GenericTypeFactoryProvider : IFactoryProvider
 {
     private readonly Type baseType;
     private readonly Type factoryBaseType;
 
-    public GenericTypeFactory(Type baseType, Type factoryBaseType)
+    public GenericTypeFactoryProvider(Type baseType, Type factoryBaseType)
     {
         this.baseType = baseType;
         this.factoryBaseType = factoryBaseType;
