@@ -17,7 +17,8 @@ public sealed class Fixture
         new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
         new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
         new ArrayFactoryProvider(),
-        new GenericTypeFactoryProvider(typeof(List<>), typeof(ListFactory<>))
+        new GenericTypeFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
+        new GenericTypeFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>))
     };
 
     private readonly IFactoryProvider[] providers;

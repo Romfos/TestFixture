@@ -19,4 +19,10 @@ public sealed class CollectionsFactoryTests
     {
         fixture.Create<List<string>>();
     }
+
+    [TestMethod]
+    public void Dictionary()
+    {
+        fixture.Create<Dictionary<int, string>>();
+    }
 }
