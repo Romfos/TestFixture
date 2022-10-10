@@ -1,37 +1,36 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using TestFixture.Factories;
+using TestFixture.Factories.Collections;
+using TestFixture.Factories.Primitives;
 using TestFixture.Providers;
 
 namespace TestFixture;
 
 public sealed class Fixture
 {
-    private readonly ImmutableArray<IFactoryProvider> providers;
+    private static readonly IFactoryProvider[] defaultFactoryProviders =
+    {
+        new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
+        new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
+        new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
+        new ArrayFactoryProvider(),
+        new GenericTypeFactory(typeof(List<>), typeof(ListFactory<>))
+    };
+
+    private readonly IFactoryProvider[] providers;
     private readonly ConcurrentDictionary<Type, IFactory> factories = new();
 
     public Fixture()
     {
-        providers = CreateDefaultFactoryProviders().ToImmutableArray();
+        providers = defaultFactoryProviders;
     }
 
     public Fixture(IEnumerable<IFactoryProvider> customfactoryProviders)
     {
-        providers = CreateDefaultFactoryProviders().Concat(customfactoryProviders).ToImmutableArray();
-    }
-
-    private IEnumerable<IFactoryProvider> CreateDefaultFactoryProviders()
-    {
-        var factoryProviderType = typeof(IFactoryProvider);
-
-        return GetType().Assembly.GetTypes()
-            .Where(x => x.IsClass && !x.IsAbstract && !x.IsGenericType)
-            .Where(x => factoryProviderType.IsAssignableFrom(x))
-            .Select(x => Activator.CreateInstance(x))
-            .Cast<IFactoryProvider>();
+        providers = defaultFactoryProviders.Concat(customfactoryProviders).ToArray();
     }
 
     public T Create<T>()
