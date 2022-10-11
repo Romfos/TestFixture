@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
+using TestFixture.Factories.Collections.Immutable;
 using TestFixture.Factories.Primitives;
 using TestFixture.Providers;
 
@@ -18,7 +20,10 @@ public sealed class Fixture
         new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
         new ArrayFactoryProvider(),
         new GenericTypeFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
-        new GenericTypeFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>))
+        new GenericTypeFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+        new GenericTypeFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
+        new GenericTypeFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
+        new GenericTypeFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
     };
 
     private readonly IFactoryProvider[] providers;

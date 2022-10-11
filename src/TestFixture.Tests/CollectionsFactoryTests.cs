@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace TestFixture.Tests;
 
@@ -24,5 +25,23 @@ public sealed class CollectionsFactoryTests
     public void Dictionary()
     {
         fixture.Create<Dictionary<int, string>>();
+    }
+
+    [TestMethod]
+    public void ImmutableArray()
+    {
+        fixture.Create<ImmutableArray<string>>();
+    }
+
+    [TestMethod]
+    public void ImmutableList()
+    {
+        fixture.Create<ImmutableList<string>>();
+    }
+
+    [TestMethod]
+    public void ImmutableDictionary()
+    {
+        fixture.Create<ImmutableDictionary<int, string>>();
     }
 }
