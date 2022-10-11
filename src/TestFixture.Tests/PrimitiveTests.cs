@@ -40,4 +40,37 @@ public sealed class PrimitiveTypesFactoryTests
 
         fixture.Create<string>().Should().Be(expected);
     }
+
+    [TestMethod]
+    public void Int64Test()
+    {
+        var expected = long.MinValue;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<long>().Should().Be(expected);
+    }
+
+    [TestMethod]
+    public void DateTimeTest()
+    {
+        var expected = DateTime.UtcNow;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<DateTime>().Should().Be(expected);
+    }
+
+    [TestMethod]
+    public void TimeSpanTest()
+    {
+        var expected = DateTime.UtcNow.TimeOfDay;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<TimeSpan>().Should().Be(expected);
+    }
 }

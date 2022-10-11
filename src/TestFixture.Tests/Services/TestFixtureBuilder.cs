@@ -30,6 +30,27 @@ internal sealed class TestFixtureBuilder
         return this;
     }
 
+    public TestFixtureBuilder With(params long[] values)
+    {
+        var queue = new Queue<long>(values);
+        mock.SetupGet(x => x.Int64).Returns(() => queue.Dequeue());
+        return this;
+    }
+
+    public TestFixtureBuilder With(params DateTime[] values)
+    {
+        var queue = new Queue<DateTime>(values);
+        mock.SetupGet(x => x.DateTime).Returns(() => queue.Dequeue());
+        return this;
+    }
+
+    public TestFixtureBuilder With(params TimeSpan[] values)
+    {
+        var queue = new Queue<TimeSpan>(values);
+        mock.SetupGet(x => x.TimeSpan).Returns(() => queue.Dequeue());
+        return this;
+    }
+
     public Fixture Build()
     {
         var mockRandomServiceFactory = new MockRandomServiceFactory(mock.Object);

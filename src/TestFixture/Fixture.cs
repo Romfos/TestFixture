@@ -19,12 +19,18 @@ public sealed class Fixture
         new TypeFactoryProvider(typeof(IRandomService), typeof(RandomServiceFactory)),
 
         new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
-        new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
+        new TypeFactoryProvider(typeof(long), typeof(Int64Factory)),
         new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
         new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
+        new TypeFactoryProvider(typeof(DateTime), typeof(DateTimeFactory)),
+        new TypeFactoryProvider(typeof(TimeSpan), typeof(TimeSpanFactory)),
+
+        new EnumFactoryProvider(),
+
         new ArrayFactoryProvider(),
         new GenericTypeFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
         new GenericTypeFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+
         new GenericTypeFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
         new GenericTypeFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericTypeFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
