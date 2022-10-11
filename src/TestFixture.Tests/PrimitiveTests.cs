@@ -73,4 +73,15 @@ public sealed class PrimitiveTypesFactoryTests
 
         fixture.Create<TimeSpan>().Should().Be(expected);
     }
+
+    [TestMethod]
+    public void BooleanTest()
+    {
+        var expected = 1;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<bool>().Should().BeTrue();
+    }
 }

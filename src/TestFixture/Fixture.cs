@@ -18,6 +18,7 @@ public sealed class Fixture
     {
         new TypeFactoryProvider(typeof(IRandomService), typeof(RandomServiceFactory)),
 
+        new TypeFactoryProvider(typeof(bool), typeof(BooleanFactory)),
         new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
         new TypeFactoryProvider(typeof(long), typeof(Int64Factory)),
         new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
