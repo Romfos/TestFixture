@@ -1,28 +1,43 @@
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;
 
 [TestClass]
 public sealed class PrimitiveTypesFactoryTests
 {
-    private readonly Fixture fixture = new Fixture();
-
     [TestMethod]
-    public void Int32()
+    public void Int32Test()
     {
-        fixture.Create<int>();
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<int>().Should().Be(expected);
     }
 
     [TestMethod]
-    public void Guid()
+    public void GuidTest()
     {
-        fixture.Create<Guid>();
+        var expected = System.Guid.NewGuid();
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<Guid>().Should().Be(expected);
     }
 
     [TestMethod]
-    public void String()
+    public void StringTest()
     {
-        fixture.Create<string>();
+        var expected = "abcd";
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<string>().Should().Be(expected);
     }
 }

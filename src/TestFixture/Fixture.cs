@@ -8,6 +8,7 @@ using TestFixture.Factories.Collections;
 using TestFixture.Factories.Collections.Immutable;
 using TestFixture.Factories.Primitives;
 using TestFixture.Providers;
+using TestFixture.Services;
 
 namespace TestFixture;
 
@@ -15,6 +16,9 @@ public sealed class Fixture
 {
     private static readonly IFactoryProvider[] defaultFactoryProviders =
     {
+        new TypeFactoryProvider(typeof(IRandomService), typeof(RandomServiceFactory)),
+
+        new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
         new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
         new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
         new TypeFactoryProvider(typeof(string), typeof(StringFactory)),

@@ -1,47 +1,82 @@
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;
 
 [TestClass]
 public sealed class CollectionsFactoryTests
 {
-    private readonly Fixture fixture = new Fixture();
-
     [TestMethod]
-    public void Array()
+    public void ArrayTest()
     {
-        fixture.Create<string[]>();
+        var expected = new[] { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<int[]>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
-    public void List()
+    public void ListTest()
     {
-        fixture.Create<List<string>>();
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<List<int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
-    public void Dictionary()
+    public void DictionaryTest()
     {
-        fixture.Create<Dictionary<int, string>>();
+        var expected = new Dictionary<int, int>
+        {
+            [1] = 2,
+            [3] = 4,
+            [5] = 6,
+        };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<Dictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
-    public void ImmutableArray()
+    public void ImmutableArrayTest()
     {
-        fixture.Create<ImmutableArray<string>>();
+        var expected = ImmutableArray.Create(1, 2, 3);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ImmutableArray<int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
-    public void ImmutableList()
+    public void ImmutableListTest()
     {
-        fixture.Create<ImmutableList<string>>();
+        var expected = ImmutableList.Create(1, 2, 3);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ImmutableList<int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
-    public void ImmutableDictionary()
+    public void ImmutableDictionaryTest()
     {
-        fixture.Create<ImmutableDictionary<int, string>>();
+        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<ImmutableDictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
 }
