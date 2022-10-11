@@ -5,7 +5,7 @@ on:
         description: "Nuget package version"
         required: true
         type: string
-        default: '0.0.1-preview'
+        default: "0.0.1-preview"
 
 jobs:
   release:
@@ -20,7 +20,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Pack nuget package
-        run: dotnet pack ./src/TestFixture.sln -p:Configuration=Release -p:Version=${{ inputs.Version }} -o "./build"
+        run: dotnet pack ./src/TestFixture/TestFixture.csproj -p:Configuration=Release -p:Version=${{ inputs.Version }} -o "./build"
 
       - name: Push to nuget
         run: dotnet nuget push .\build\*.nupkg -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
