@@ -25,6 +25,7 @@ public sealed class Fixture
         new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
         new TypeFactoryProvider(typeof(DateTime), typeof(DateTimeFactory)),
         new TypeFactoryProvider(typeof(TimeSpan), typeof(TimeSpanFactory)),
+        new TypeFactoryProvider(typeof(Uri), typeof(UriFactory)),
 
         new EnumFactoryProvider(),
         new GenericTypeFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),

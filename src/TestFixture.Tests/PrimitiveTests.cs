@@ -84,4 +84,15 @@ public sealed class PrimitiveTypesFactoryTests
 
         fixture.Create<bool>().Should().BeTrue();
     }
+
+    [TestMethod]
+    public void UriTest()
+    {
+        var expected = Guid.NewGuid();
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<Uri>().Should().Be(new Uri($"http://{expected}.com"));
+    }
 }
