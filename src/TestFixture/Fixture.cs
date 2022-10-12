@@ -28,15 +28,15 @@ public sealed class Fixture
         new TypeFactoryProvider(typeof(Uri), typeof(UriFactory)),
 
         new EnumFactoryProvider(),
-        new GenericTypeFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
+        new GenericFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
 
         new ArrayFactoryProvider(),
-        new GenericTypeFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
-        new GenericTypeFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+        new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
 
-        new GenericTypeFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
-        new GenericTypeFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
-        new GenericTypeFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
+        new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
+        new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
+        new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
     };
 
     private readonly IFactoryProvider[] providers;
