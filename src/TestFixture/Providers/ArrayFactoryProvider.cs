@@ -8,13 +8,13 @@ internal sealed class ArrayFactoryProvider : IFactoryProvider
 {
     public IFactory? Resolve(Type type)
     {
-        if (type.IsArray)
+        if (!type.IsArray)
         {
-            var argument = type.GetElementType()!;
-            var factoryType = typeof(ArrayFactory<>).MakeGenericType(argument);
-            return Activator.CreateInstance(factoryType) as IFactory;
+            return null;
         }
 
-        return null;
+        var argument = type.GetElementType()!;
+        var factoryType = typeof(ArrayFactory<>).MakeGenericType(argument);
+        return Activator.CreateInstance(factoryType) as IFactory;
     }
 }

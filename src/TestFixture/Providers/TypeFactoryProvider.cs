@@ -6,7 +6,6 @@ namespace TestFixture.Providers;
 public sealed class TypeFactoryProvider : IFactoryProvider
 {
     private readonly Type targetType;
-
     private readonly Type factoryType;
 
     public TypeFactoryProvider(Type targetType, Type factoryType)
@@ -17,11 +16,11 @@ public sealed class TypeFactoryProvider : IFactoryProvider
 
     public IFactory? Resolve(Type type)
     {
-        if (targetType == type)
+        if (targetType != type)
         {
-            return Activator.CreateInstance(factoryType) as IFactory;
+            return null;
         }
 
-        return null;
+        return Activator.CreateInstance(factoryType) as IFactory;
     }
 }
