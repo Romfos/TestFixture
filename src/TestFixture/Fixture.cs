@@ -44,12 +44,12 @@ public sealed class Fixture
     };
     private static readonly ConcurrentDictionary<Type, IFactory> defaultFactories = new();
 
-    private readonly IFactoryProvider[] customProviders;
+    private readonly IFactoryProvider[]? customProviders;
     private readonly ConcurrentDictionary<Type, IFactory?> customFactories = new();
 
     public Fixture()
     {
-        customProviders = Array.Empty<IFactoryProvider>();
+        customProviders = null;
     }
 
     public Fixture(IFactoryProvider[] customfactoryProviders)
@@ -69,13 +69,16 @@ public sealed class Fixture
 
     internal object Create(Type type)
     {
-        var customFactory = customFactories.GetOrAdd(type, type => customProviders
-            .Select(provider => provider.Resolve(type))
-            .FirstOrDefault(x => x != null));
-
-        if (customFactory != null)
+        if (customProviders != null)
         {
-            return customFactory.Create(this);
+            var customFactory = customFactories.GetOrAdd(type, type => customProviders
+                .Select(provider => provider.Resolve(type))
+                .FirstOrDefault(x => x != null));
+
+            if (customFactory != null)
+            {
+                return customFactory.Create(this);
+            }
         }
 
         var defaulFactory = defaultFactories.GetOrAdd(type, static type => defaultFactoryProviders
