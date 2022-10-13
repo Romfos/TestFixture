@@ -1,4 +1,4 @@
-﻿using TestFixture.Services;
+using TestFixture.Services;
 
 namespace TestFixture.Factories.Primitives;
 
