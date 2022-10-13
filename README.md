@@ -24,4 +24,4 @@ https://www.nuget.org/packages/TestFixture
 - Dates: `TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)`
 - Collections: `Array, List<>, Dictionary<,>`
 - Immutable collections: `ImmutableArray<>, ImmutableList<>, ImmutableDictionary<,>`
-- Composition of supported types in Class, Record, Struct (inject via first constructor, public properties, public fields)
+- Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
