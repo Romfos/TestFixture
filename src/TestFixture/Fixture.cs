@@ -42,18 +42,19 @@ public sealed class Fixture
         new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
     };
+    private static readonly ConcurrentDictionary<Type, IFactory> defaultFactories = new();
 
-    private readonly IFactoryProvider[] providers;
-    private readonly ConcurrentDictionary<Type, IFactory> factories = new();
+    private readonly IFactoryProvider[] customProviders;
+    private readonly ConcurrentDictionary<Type, IFactory?> customFactories = new();
 
     public Fixture()
     {
-        providers = defaultFactoryProviders;
+        customProviders = Array.Empty<IFactoryProvider>();
     }
 
-    public Fixture(IEnumerable<IFactoryProvider> customfactoryProviders)
+    public Fixture(IFactoryProvider[] customfactoryProviders)
     {
-        providers = customfactoryProviders.Concat(defaultFactoryProviders).ToArray();
+        customProviders = customfactoryProviders;
     }
 
     public T Create<T>()
@@ -68,10 +69,19 @@ public sealed class Fixture
 
     internal object Create(Type type)
     {
-        var factory = factories.GetOrAdd(type, _ => providers
+        var customFactory = customFactories.GetOrAdd(type, type => customProviders
+            .Select(provider => provider.Resolve(type))
+            .FirstOrDefault(x => x != null));
+
+        if (customFactory != null)
+        {
+            return customFactory.Create(this);
+        }
+
+        var defaulFactory = defaultFactories.GetOrAdd(type, static type => defaultFactoryProviders
             .Select(provider => provider.Resolve(type))
             .FirstOrDefault(x => x != null) ?? new DefaultClassFactory(type));
 
-        return factory.Create(this);
+        return defaulFactory.Create(this);
     }
 }
