@@ -6,7 +6,7 @@ internal sealed class TimeSpanFactory : IFactory
 {
     public object Create(Fixture fixture)
     {
-        return fixture.Create<IRandomService>().TimeSpan;
+        return fixture.Create<IRandomService>().DateTime.TimeOfDay;
     }
 }
 

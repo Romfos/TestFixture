@@ -66,12 +66,12 @@ public sealed class PrimitiveTypesFactoryTests
     [TestMethod]
     public void TimeSpanTest()
     {
-        var expected = DateTime.UtcNow.TimeOfDay;
+        var expected = DateTime.UtcNow;
         var fixture = new TestFixtureBuilder()
             .With(expected)
             .Build();
 
-        fixture.Create<TimeSpan>().Should().Be(expected);
+        fixture.Create<TimeSpan>().Should().Be(expected.TimeOfDay);
     }
 
     [TestMethod]

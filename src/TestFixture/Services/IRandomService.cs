@@ -15,6 +15,4 @@ public interface IRandomService
     string String { get; }
 
     DateTime DateTime { get; }
-
-    TimeSpan TimeSpan { get; }
 }

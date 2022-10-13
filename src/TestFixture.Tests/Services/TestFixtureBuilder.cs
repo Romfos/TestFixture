@@ -51,13 +51,6 @@ internal sealed class TestFixtureBuilder
         return this;
     }
 
-    public TestFixtureBuilder With(params TimeSpan[] values)
-    {
-        var queue = new Queue<TimeSpan>(values);
-        mock.SetupGet(x => x.TimeSpan).Returns(() => queue.Dequeue());
-        return this;
-    }
-
     public Fixture Build()
     {
         var mockRandomServiceFactory = new MockRandomServiceFactory(mock.Object);
