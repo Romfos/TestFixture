@@ -8,7 +8,7 @@ public sealed class RandomService : IRandomService
 
     public int Int32 => random.Next();
 
-#if NET6_0
+#if NET6_0_OR_GREATER
     public long Int64 => random.NextInt64();
 #else
     public long Int64 => random.Next();

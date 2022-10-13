@@ -139,4 +139,96 @@ public sealed class PrimitiveTypesFactoryTests
 
         fixture.Create<double>().Should().Be(expected);
     }
+
+    [TestMethod]
+    public void FloatTest()
+    {
+        var expected = 123d;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<float>().Should().Be((float)expected);
+    }
+
+    [TestMethod]
+    public void SByteTest()
+    {
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<sbyte>().Should().Be((sbyte)expected);
+    }
+
+    [TestMethod]
+    public void ShortTest()
+    {
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<short>().Should().Be((short)expected);
+    }
+
+    [TestMethod]
+    public void UInt32Test()
+    {
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<uint>().Should().Be((uint)expected);
+    }
+
+    [TestMethod]
+    public void UInt64Test()
+    {
+        var expected = 123L;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<ulong>().Should().Be((ulong)expected / 2);
+    }
+
+    [TestMethod]
+    public void UInt16Test()
+    {
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<ushort>().Should().Be((ushort)expected);
+    }
+
+#if NET6_0_OR_GREATER
+
+    [TestMethod]
+    public void DateOnlyTest()
+    {
+        var expected = DateTime.UtcNow;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<DateOnly>().Should().Be(DateOnly.FromDateTime(expected));
+    }
+
+    [TestMethod]
+    public void TimeOnlyTest()
+    {
+        var expected = DateTime.UtcNow;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<TimeOnly>().Should().Be(TimeOnly.FromDateTime(expected));
+    }
+
+#endif
 }

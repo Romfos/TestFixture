@@ -6,6 +6,6 @@ internal sealed class ByteFactory : IFactory
 {
     public object Create(Fixture fixture)
     {
-        return (byte)(fixture.Create<IRandomService>().Int32 % 255);
+        return (byte)(fixture.Create<IRandomService>().Int32 % byte.MaxValue);
     }
 }
