@@ -95,4 +95,48 @@ public sealed class PrimitiveTypesFactoryTests
 
         fixture.Create<Uri>().Should().Be(new Uri($"http://{expected}.com"));
     }
+
+    [TestMethod]
+    public void ByteTest()
+    {
+        byte expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<byte>().Should().Be(expected);
+    }
+
+    [TestMethod]
+    public void CharTest()
+    {
+        var expected = (char)123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<char>().Should().Be(expected);
+    }
+
+    [TestMethod]
+    public void DecimalTest()
+    {
+        var expected = 123;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<decimal>().Should().Be(expected);
+    }
+
+    [TestMethod]
+    public void DoubleTest()
+    {
+        var expected = 123d;
+        var fixture = new TestFixtureBuilder()
+            .With(expected)
+            .Build();
+
+        fixture.Create<double>().Should().Be(expected);
+    }
 }

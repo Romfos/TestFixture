@@ -8,6 +8,8 @@ public interface IRandomService
 
     long Int64 { get; }
 
+    double Double { get; }
+
     Guid Guid { get; }
 
     string String { get; }

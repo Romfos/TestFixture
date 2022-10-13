@@ -10,6 +10,8 @@ public sealed class RandomService : IRandomService
 
     public long Int64 => random.Next();
 
+    public double Double => random.NextDouble();
+
     public Guid Guid => Guid.NewGuid();
 
     public string String => $"string_{Guid}";

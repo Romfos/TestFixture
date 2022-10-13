@@ -16,6 +16,13 @@ internal sealed class TestFixtureBuilder
         return this;
     }
 
+    public TestFixtureBuilder With(params double[] values)
+    {
+        var queue = new Queue<double>(values);
+        mock.SetupGet(x => x.Double).Returns(() => queue.Dequeue());
+        return this;
+    }
+
     public TestFixtureBuilder With(params Guid[] values)
     {
         var queue = new Queue<Guid>(values);
