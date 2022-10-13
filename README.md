@@ -17,3 +17,8 @@ var array = fixture.Create<string[]>();
 
 # Nuget
 https://www.nuget.org/packages/TestFixture
+
+# Supported Types
+- Base: `byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool`
+- System: `Guid, Uri, TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only), Enums, Nullable<>`
+- Collections: `Array, List<>, Dictionary<,>, ImmutableArray<>, ImmutableList<>, ImmutableDictionary<,>`
