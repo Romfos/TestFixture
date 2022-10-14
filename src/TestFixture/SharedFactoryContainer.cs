@@ -17,34 +17,6 @@ internal sealed class SharedFactoryContainer
 {
     private static readonly IFactoryProvider[] providers =
     {
-        new TypeFactoryProvider(typeof(IRandomService), typeof(RandomServiceFactory)),
-
-        new TypeFactoryProvider(typeof(byte), typeof(ByteFactory)),
-        new TypeFactoryProvider(typeof(sbyte), typeof(SByteFactory)),
-        new TypeFactoryProvider(typeof(short), typeof(ShortFactory)),
-        new TypeFactoryProvider(typeof(ushort), typeof(UShortFactory)),
-        new TypeFactoryProvider(typeof(int), typeof(Int32Factory)),
-        new TypeFactoryProvider(typeof(uint), typeof(UInt32Factory)),
-        new TypeFactoryProvider(typeof(long), typeof(Int64Factory)),
-        new TypeFactoryProvider(typeof(ulong), typeof(UInt64Factory)),
-        new TypeFactoryProvider(typeof(float), typeof(FloatFactory)),
-        new TypeFactoryProvider(typeof(double), typeof(DoubleFactory)),
-        new TypeFactoryProvider(typeof(decimal), typeof(DecimalFactory)),
-
-        new TypeFactoryProvider(typeof(char), typeof(CharFactory)),
-        new TypeFactoryProvider(typeof(string), typeof(StringFactory)),
-        new TypeFactoryProvider(typeof(bool), typeof(BooleanFactory)),
-
-        new TypeFactoryProvider(typeof(Guid), typeof(GuidFactory)),
-        new TypeFactoryProvider(typeof(Uri), typeof(UriFactory)),
-        new TypeFactoryProvider(typeof(TimeSpan), typeof(TimeSpanFactory)),
-        new TypeFactoryProvider(typeof(DateTime), typeof(DateTimeFactory)),
-        new TypeFactoryProvider(typeof(DateTimeOffset), typeof(DateTimeOffsetFactory)),
-#if NET6_0_OR_GREATER
-        new TypeFactoryProvider(typeof(TimeOnly), typeof(TimeOnlyFactory)),
-        new TypeFactoryProvider(typeof(DateOnly), typeof(DateOnlyFactory)),
-#endif
-
         new EnumFactoryProvider(),
         new GenericFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
 
@@ -61,7 +33,36 @@ internal sealed class SharedFactoryContainer
         new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
     };
 
-    private static readonly ConcurrentDictionary<Type, IFactory> factories = new();
+    private static readonly ConcurrentDictionary<Type, IFactory> factories = new()
+    {
+        [typeof(IRandomService)] = new RandomServiceFactory(),
+
+        [typeof(byte)] = new ByteFactory(),
+        [typeof(sbyte)] = new SByteFactory(),
+        [typeof(short)] = new ShortFactory(),
+        [typeof(ushort)] = new UShortFactory(),
+        [typeof(int)] = new Int32Factory(),
+        [typeof(uint)] = new UInt32Factory(),
+        [typeof(long)] = new Int64Factory(),
+        [typeof(ulong)] = new UInt64Factory(),
+        [typeof(float)] = new FloatFactory(),
+        [typeof(double)] = new DoubleFactory(),
+        [typeof(decimal)] = new DecimalFactory(),
+
+        [typeof(char)] = new CharFactory(),
+        [typeof(string)] = new StringFactory(),
+        [typeof(bool)] = new BooleanFactory(),
+
+        [typeof(Guid)] = new GuidFactory(),
+        [typeof(Uri)] = new UriFactory(),
+        [typeof(TimeSpan)] = new TimeSpanFactory(),
+        [typeof(DateTime)] = new DateTimeFactory(),
+        [typeof(DateTimeOffset)] = new DateTimeOffsetFactory(),
+#if NET6_0_OR_GREATER
+        [typeof(TimeOnly)] = new TimeOnlyFactory(),
+        [typeof(DateOnly)] = new DateOnlyFactory(),
+#endif
+    };
 
     public static IFactory Resolve(Type type)
     {
