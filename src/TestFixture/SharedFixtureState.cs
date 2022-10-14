@@ -21,8 +21,6 @@ internal static class SharedFixtureState
 
     internal static readonly ConcurrentDictionary<Type, IFactory> factories = new()
     {
-        [typeof(IRandomService)] = new RandomServiceFactory(),
-
         [typeof(byte)] = new ByteFactory(),
         [typeof(sbyte)] = new SByteFactory(),
         [typeof(short)] = new ShortFactory(),
@@ -34,7 +32,6 @@ internal static class SharedFixtureState
         [typeof(float)] = new FloatFactory(),
         [typeof(double)] = new DoubleFactory(),
         [typeof(decimal)] = new DecimalFactory(),
-
         [typeof(char)] = new CharFactory(),
         [typeof(string)] = new StringFactory(),
         [typeof(bool)] = new BooleanFactory(),
