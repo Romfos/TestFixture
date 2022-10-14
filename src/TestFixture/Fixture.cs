@@ -33,23 +33,23 @@ public sealed class Fixture
         }
     }
 
-    public void RegisterFactory<T>(IFactory value)
+    public void RegisterFactory<T>(IFactory factory)
     {
-        RegisterFactory(typeof(T), value);
+        RegisterFactory(typeof(T), factory);
     }
 
-    public void RegisterFactory(Type type, IFactory value)
+    public void RegisterFactory(Type type, IFactory factory)
     {
         if (factories == null)
         {
             factories = new()
             {
-                [type] = value
+                [type] = factory
             };
         }
         else
         {
-            factories[type] = value;
+            factories[type] = factory;
         }
     }
 
