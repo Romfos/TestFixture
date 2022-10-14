@@ -9,7 +9,7 @@ var array = fixture.Create<string[]>();
 
 ```
 
-# Supported runtimes
+# Supported platforms
 
 - .NET 6+
 - .NET Framework 4.6.2+
