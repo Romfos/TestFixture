@@ -6,13 +6,15 @@ namespace TestFixture.Factories;
 
 internal sealed class DefaultClassFactory : IFactory
 {
-    private readonly Type type;
     private readonly ConstructorInfo constructorInfo;
+    private readonly PropertyInfo[] properties;
+    private readonly FieldInfo[] fields;
 
     public DefaultClassFactory(Type type)
     {
-        this.type = type;
         constructorInfo = type.GetConstructors()[0];
+        properties = type.GetProperties().Where(x => x.CanWrite).ToArray();
+        fields = type.GetFields().Where(x => x.IsPublic).ToArray();
     }
 
     public object Create(Fixture fixture)
@@ -33,7 +35,7 @@ internal sealed class DefaultClassFactory : IFactory
 
     private void ResolveProperties(Fixture fixture, object target)
     {
-        foreach (var property in type.GetProperties().Where(x => x.CanWrite))
+        foreach (var property in properties)
         {
             property.SetValue(target, fixture.Create(property.PropertyType!));
         }
@@ -41,7 +43,7 @@ internal sealed class DefaultClassFactory : IFactory
 
     private void ResolveFields(Fixture fixture, object target)
     {
-        foreach (var field in type.GetFields().Where(x => x.IsPublic))
+        foreach (var field in fields)
         {
             field.SetValue(target, fixture.Create(field.FieldType!));
         }
