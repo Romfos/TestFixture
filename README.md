@@ -22,6 +22,6 @@ https://www.nuget.org/packages/TestFixture
 - Base: `byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool`
 - System: `Guid, Uri, Enums, Nullable<>`
 - Dates: `TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)`
-- Collections: `Array, List<>, Dictionary<,>`
+- Collections: `Array, List<>, Dictionary<,>, IEnumerable<>, ICollection<>, IList<>`
 - Immutable collections: `ImmutableArray<>, ImmutableList<>, ImmutableDictionary<,>`
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
