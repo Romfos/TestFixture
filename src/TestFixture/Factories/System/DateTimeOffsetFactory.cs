@@ -1,7 +1,7 @@
 using System;
 using TestFixture.Services;
 
-namespace TestFixture.Factories.Primitives;
+namespace TestFixture.Factories.System;
 
 internal sealed class DateTimeOffsetFactory : IFactory
 {

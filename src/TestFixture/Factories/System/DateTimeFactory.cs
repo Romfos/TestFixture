@@ -1,6 +1,6 @@
 using TestFixture.Services;
 
-namespace TestFixture.Factories.Primitives;
+namespace TestFixture.Factories.System;
 
 internal sealed class DateTimeFactory : IFactory
 {

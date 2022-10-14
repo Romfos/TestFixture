@@ -1,6 +1,6 @@
 using System;
 
-namespace TestFixture.Factories.Primitives;
+namespace TestFixture.Factories.System;
 
 internal sealed class UriFactory : IFactory
 {
