@@ -7,7 +7,7 @@ using TestFixture.Tests.Services;
 namespace TestFixture.Tests;
 
 [TestClass]
-public sealed class CollectionsFactoryTests
+public sealed class CollectionsTests
 {
     [TestMethod]
     public void ArrayTest()
@@ -29,6 +29,39 @@ public sealed class CollectionsFactoryTests
             .Build();
 
         fixture.Create<List<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void IListTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IList<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void IEnumerableTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IEnumerable<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void ICollectionTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ICollection<int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]

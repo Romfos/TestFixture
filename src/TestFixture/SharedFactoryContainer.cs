@@ -52,6 +52,10 @@ internal sealed class SharedFactoryContainer
         new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
         new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
 
+        new GenericFactoryProvider(typeof(IEnumerable<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(ICollection<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(IList<>), typeof(ListFactory<>)),
+
         new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
