@@ -12,6 +12,12 @@ public sealed class Fixture
     private Dictionary<Type, IFactory>? factories;
     private List<IFactoryProvider>? providers;
 
+    public void RegisterInstance<T>(T value)
+        where T : notnull
+    {
+        RegisterInstance(typeof(T), value);
+    }
+
     public void RegisterInstance(Type type, object value)
     {
         if (instances == null)
@@ -25,6 +31,11 @@ public sealed class Fixture
         {
             instances[type] = value;
         }
+    }
+
+    public void RegisterFactory<T>(IFactory value)
+    {
+        RegisterFactory(typeof(T), value);
     }
 
     public void RegisterFactory(Type type, IFactory value)

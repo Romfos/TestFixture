@@ -54,7 +54,7 @@ internal sealed class TestFixtureBuilder
     public Fixture Build()
     {
         var fixture = new Fixture();
-        fixture.RegisterInstance(typeof(IRandomService), mock.Object);
+        fixture.RegisterInstance<IRandomService>(mock.Object);
         return fixture;
     }
 }
