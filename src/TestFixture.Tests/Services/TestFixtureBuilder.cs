@@ -53,8 +53,8 @@ internal sealed class TestFixtureBuilder
 
     public Fixture Build()
     {
-        var mockRandomServiceFactory = new MockRandomServiceFactory(mock.Object);
-        var mockFactoryProvider = new MockFactoryProvider(mockRandomServiceFactory);
-        return new Fixture(new[] { mockFactoryProvider });
+        var fixture = new Fixture();
+        fixture.RegisterInstance(typeof(IRandomService), mock.Object);
+        return fixture;
     }
 }

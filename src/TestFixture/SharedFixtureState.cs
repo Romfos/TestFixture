@@ -2,7 +2,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 using TestFixture.Factories.Collections.Immutable;
@@ -13,27 +12,14 @@ using TestFixture.Services;
 
 namespace TestFixture;
 
-internal sealed class SharedFactoryContainer
+internal static class SharedFixtureState
 {
-    private static readonly IFactoryProvider[] providers =
+    internal static readonly Dictionary<Type, object> instances = new()
     {
-        new EnumFactoryProvider(),
-        new GenericFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
-
-        new ArrayFactoryProvider(),
-        new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
-
-        new GenericFactoryProvider(typeof(IEnumerable<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(ICollection<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(IList<>), typeof(ListFactory<>)),
-
-        new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
-        new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
-        new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
+        [typeof(IRandomService)] = new RandomService()
     };
 
-    private static readonly ConcurrentDictionary<Type, IFactory> factories = new()
+    internal static readonly ConcurrentDictionary<Type, IFactory> factories = new()
     {
         [typeof(IRandomService)] = new RandomServiceFactory(),
 
@@ -64,10 +50,21 @@ internal sealed class SharedFactoryContainer
 #endif
     };
 
-    public static IFactory Resolve(Type type)
+    internal static readonly IFactoryProvider[] providers =
     {
-        return factories.GetOrAdd(type, static type => providers
-            .Select(provider => provider.Resolve(type))
-            .FirstOrDefault(x => x != null) ?? new DefaultClassFactory(type));
-    }
+        new EnumFactoryProvider(),
+        new GenericFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
+
+        new ArrayFactoryProvider(),
+        new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+
+        new GenericFactoryProvider(typeof(IEnumerable<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(ICollection<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(IList<>), typeof(ListFactory<>)),
+
+        new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
+        new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
+        new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
+    };
 }
