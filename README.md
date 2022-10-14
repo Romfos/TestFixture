@@ -1,5 +1,5 @@
 # Description
-Small experemental fixture library for unit tests
+Small fixture library for unit tests
 
 # Example
 ```csharp
