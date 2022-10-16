@@ -90,6 +90,7 @@ public sealed class Fixture
             return factory.Create(this);
         }
 
+
         if (providers != null)
         {
             factory = providers.Select(provider => provider.Resolve(type)).FirstOrDefault(x => x != null);
