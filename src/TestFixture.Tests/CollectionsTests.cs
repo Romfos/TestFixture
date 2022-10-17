@@ -2,6 +2,8 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
+using System.Threading.Tasks;
 using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;
@@ -51,6 +53,19 @@ public sealed class CollectionsTests
             .Build();
 
         fixture.Create<IEnumerable<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public async Task IAsyncEnumerableEnumerableTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        var actual = await fixture.Create<IAsyncEnumerable<int>>().ToListAsync();
+
+        actual.Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]
