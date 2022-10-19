@@ -113,3 +113,4 @@ dotnet_diagnostic.CA1852.severity=error
 
 [*Tests.cs]
 dotnet_code_quality_unused_parameters=non_public:suggestion
+dotnet_diagnostic.CA1852.severity=suggestion
