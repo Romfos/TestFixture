@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Pack nuget package
         run: dotnet pack ./src/TestFixture/TestFixture.csproj -p:Configuration=Release -p:Version=${{ inputs.Version }} -o "./build"
