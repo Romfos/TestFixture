@@ -2,6 +2,8 @@
 
 Small fixture library for unit tests
 
+[![.github/workflows/verify.yml](https://github.com/Romfos/TestFixture/actions/workflows/verify.yml/badge.svg)](https://github.com/Romfos/TestFixture/actions/workflows/verify.yml)
+
 # Example
 
 ```csharp
