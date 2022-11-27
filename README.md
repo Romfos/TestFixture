@@ -8,8 +8,21 @@ Small fixture library for unit tests
 
 ```csharp
 
-var fixture = new Fixture();
-var array = fixture.Create<string[]>();
+[TestMethod]
+public void ExampleTest()
+{
+    // arrange
+    var underTest = new MyService();
+    
+    var fixture = new Fixture();
+    var testData = fixture.Create<string[]>();
+
+    // act
+    var actual = underTest.Add(testData);
+
+    // assert
+    Assert.AreEqual(3, actual);
+}
 
 ```
 
