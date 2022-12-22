@@ -12,6 +12,7 @@
     <Description>Fixture library for unit testing</Description>
     <PackageTags>Tests Fixture</PackageTags>
     <RepositoryUrl>https://github.com/Romfos/TestFixture</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>  
 
   <ItemGroup Condition=" '$(TargetFramework)' != 'net6.0' ">
