@@ -78,7 +78,7 @@ public sealed class Fixture
         return Enumerable.Range(0, number).Select(x => Create<T>());
     }
 
-    internal object Create(Type type)
+    public object Create(Type type)
     {
         if (instances != null && instances.TryGetValue(type, out var value))
         {
