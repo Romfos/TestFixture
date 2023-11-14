@@ -13,7 +13,7 @@
   </PropertyGroup>  
 
   <ItemGroup Condition=" '$(TargetFramework)' != 'net6.0' ">
-    <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
   </ItemGroup>
 
