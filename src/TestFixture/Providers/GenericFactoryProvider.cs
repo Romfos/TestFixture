@@ -3,19 +3,11 @@ using TestFixture.Factories;
 
 namespace TestFixture.Providers;
 
-public sealed class GenericFactoryProvider : IFactoryProvider
+public sealed class GenericFactoryProvider(
+    Type baseType,
+    Type factoryBaseType) : IFactoryProvider
 {
-    private readonly Type baseType;
-    private readonly Type factoryBaseType;
-    private readonly int baseTypeGenericArgumentCount;
-
-    public GenericFactoryProvider(Type baseType, Type factoryBaseType)
-    {
-        this.baseType = baseType;
-        this.factoryBaseType = factoryBaseType;
-
-        baseTypeGenericArgumentCount = baseType.GetGenericArguments().Length;
-    }
+    private readonly int baseTypeGenericArgumentCount = baseType.GetGenericArguments().Length;
 
     public IFactory? Resolve(Type type)
     {
