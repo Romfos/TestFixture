@@ -4,18 +4,11 @@ using System.Reflection;
 
 namespace TestFixture.Factories;
 
-internal sealed class DefaultClassFactory : IFactory
+internal sealed class DefaultClassFactory(Type type) : IFactory
 {
-    private readonly ConstructorInfo constructorInfo;
-    private readonly PropertyInfo[] properties;
-    private readonly FieldInfo[] fields;
-
-    public DefaultClassFactory(Type type)
-    {
-        constructorInfo = type.GetConstructors()[0];
-        properties = type.GetProperties().Where(x => x.CanWrite).ToArray();
-        fields = type.GetFields().Where(x => x.IsPublic).ToArray();
-    }
+    private readonly ConstructorInfo constructorInfo = type.GetConstructors()[0];
+    private readonly PropertyInfo[] properties = type.GetProperties().Where(x => x.CanWrite).ToArray();
+    private readonly FieldInfo[] fields = type.GetFields().Where(x => x.IsPublic).ToArray();
 
     public object Create(Fixture fixture)
     {
