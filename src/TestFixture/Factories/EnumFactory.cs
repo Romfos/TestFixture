@@ -1,4 +1,3 @@
-using System;
 using TestFixture.Services;
 
 namespace TestFixture.Factories;

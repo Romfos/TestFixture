@@ -1,5 +1,3 @@
-using System;
-
 namespace TestFixture.Services;
 
 public sealed class RandomService : IRandomService

@@ -1,6 +1,5 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;

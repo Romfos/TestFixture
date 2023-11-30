@@ -1,4 +1,3 @@
-using System;
 using TestFixture.Factories;
 
 namespace TestFixture.Providers;

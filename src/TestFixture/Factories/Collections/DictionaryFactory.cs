@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace TestFixture.Factories.Collections;
 
 internal sealed class DictionaryFactory<TKey, TValue> : IFactory

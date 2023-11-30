@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace TestFixture.Factories.Collections;
 
 internal sealed class ArrayFactory<T> : IFactory

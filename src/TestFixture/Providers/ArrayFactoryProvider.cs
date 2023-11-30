@@ -1,4 +1,3 @@
-using System;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 

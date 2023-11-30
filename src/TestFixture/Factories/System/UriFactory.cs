@@ -1,5 +1,3 @@
-using System;
-
 namespace TestFixture.Factories.System;
 
 internal sealed class UriFactory : IFactory

@@ -1,6 +1,4 @@
 using NSubstitute;
-using System;
-using System.Collections.Generic;
 using TestFixture.Services;
 
 namespace TestFixture.Tests.Services;
