@@ -21,7 +21,7 @@ public sealed class PrimitiveTypesFactoryTests
     [TestMethod]
     public void GuidTest()
     {
-        var expected = System.Guid.NewGuid();
+        var expected = Guid.NewGuid();
         var fixture = new TestFixtureBuilder()
             .With(expected)
             .Build();
