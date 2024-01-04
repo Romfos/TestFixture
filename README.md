@@ -31,7 +31,6 @@ public void ExampleTest()
 
 - .NET 6+
 - .NET Framework 4.6.2+
-- .NET Standard 2.0 (for some older runtimes)
 
 # Nuget
 
