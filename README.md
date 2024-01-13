@@ -3,7 +3,7 @@
 Small fixture library for unit tests
 
 [![.github/workflows/verify.yml](https://github.com/Romfos/TestFixture/actions/workflows/verify.yml/badge.svg)](https://github.com/Romfos/TestFixture/actions/workflows/verify.yml)
-[![TestFixture](https://img.shields.io/nuget/v/TestFixture?label=TestFixtures)](https://www.nuget.org/packages/TestFixture)
+[![TestFixture](https://img.shields.io/nuget/v/TestFixture?label=TestFixture)](https://www.nuget.org/packages/TestFixture)
 
 # Example
 
