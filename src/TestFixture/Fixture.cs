@@ -54,10 +54,7 @@ public sealed class Fixture
     {
         if (providers == null)
         {
-            providers = new()
-            {
-                factoryProvider
-            };
+            providers = [factoryProvider];
         }
         else
         {

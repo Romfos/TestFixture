@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using TestFixture.Tests.Services;
 
@@ -90,6 +91,22 @@ public sealed class CollectionsTests
             .Build();
 
         fixture.Create<Dictionary<int, int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void ConcurrentDictionary()
+    {
+        var expected = new Dictionary<int, int>
+        {
+            [1] = 2,
+            [3] = 4,
+            [5] = 6,
+        };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<ConcurrentDictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]

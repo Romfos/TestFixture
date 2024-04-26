@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
+using TestFixture.Factories.Collections.Concurrent;
 using TestFixture.Factories.Collections.Immutable;
 using TestFixture.Factories.Primitives;
 using TestFixture.Factories.System;
@@ -53,6 +54,8 @@ internal static class SharedFixtureState
         new ArrayFactoryProvider(),
         new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
         new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+
+        new GenericFactoryProvider(typeof(ConcurrentDictionary<,>), typeof(ConcurrentDictionaryFactory<,>)),
 
         new GenericFactoryProvider(typeof(IEnumerable<>), typeof(ListFactory<>)),
         new GenericFactoryProvider(typeof(IAsyncEnumerable<>), typeof(AsyncEnumerableFactory<>)),
