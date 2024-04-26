@@ -28,7 +28,7 @@ internal sealed class DefaultClassFactory(Type type) : IFactory
     {
         foreach (var property in properties)
         {
-            property.SetValue(target, fixture.Create(property.PropertyType!));
+            property.SetValue(target, fixture.Create(property.PropertyType));
         }
     }
 
@@ -36,7 +36,7 @@ internal sealed class DefaultClassFactory(Type type) : IFactory
     {
         foreach (var field in fields)
         {
-            field.SetValue(target, fixture.Create(field.FieldType!));
+            field.SetValue(target, fixture.Create(field.FieldType));
         }
     }
 }
