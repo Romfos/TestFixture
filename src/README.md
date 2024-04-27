@@ -31,6 +31,7 @@ public void ExampleTest()
 - System: `Guid, Uri, Nullable<>`
 - Dates: `TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)`
 - Collections:
+
 | Generic       | Interfaces            | Immutable              | Concurrent              | Frozen              |
 |---------------|-----------------------|------------------------|-------------------------|---------------------|
 | 1d arrays     | IEnumerable<>         | ImmutableArray<>       | ConcurrentDictionary<,> | FrozenDictionary<,> |
@@ -39,4 +40,5 @@ public void ExampleTest()
 | Queue<>       | IAsyncEnumerable<>    | ImmutableQueue<>       |                         |                     |
 |               | IReadOnlyList<>       |                        |                         |                     |
 |               | IReadOnlyDictionary<> |                        |                         |                     |
+
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
