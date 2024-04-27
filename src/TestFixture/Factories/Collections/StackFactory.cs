@@ -1,4 +1,4 @@
-﻿namespace TestFixture.Factories.Collections;
+namespace TestFixture.Factories.Collections;
 
 internal sealed class StackFactory<T> : IFactory
 {
