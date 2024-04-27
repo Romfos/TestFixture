@@ -38,13 +38,27 @@ https://www.nuget.org/packages/TestFixture
 
 # Supported Types
 
-- Base: `byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool`
-- Enums
-- System: `Guid, Uri, Nullable<>`
-- Dates: `TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)`
-- 1d arrays
-- Collections: `List<>, Dictionary<,>, IEnumerable<>, ICollection<>, IList<>, IAsyncEnumerable<>, Queue<>, Stack<>`
-- Concurrent collections: `ConcurrentDictionary<,>`
-- Immutable collections: `ImmutableArray<>, ImmutableList<>, ImmutableDictionary<,>, ImmutableQueue<>`
-- Frozen collections (.NET 8+ only): `FrozenDictionary<,>`
+- BCL types:
+
+| Categoy      | Types                                                                                          |
+|--------------|------------------------------------------------------------------------------------------------|
+| Primitives   | byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool |
+| System types | Enum, Guid, Uri, Nullable<>                                                                    |
+| Dates        | TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)           |
+
+- Collections:
+
+| Generic            | Immutable              | Concurrent              | Frozen (.NET 8+ Only) |
+|--------------------|------------------------|-------------------------|-----------------------|
+| Array[]            | ImmutableArray<>       | ConcurrentDictionary<,> | FrozenDictionary<,>   |
+| List<>             | ImmutableList<>        |                         |                       |
+| Dictionary<,>      | ImmutableDictionary<,> |                         |                       |
+| Queue<>            | ImmutableQueue<>       |                         |                       |
+| IEnumerable<>      |                        |                         |                       |
+| ICollection<>      |                        |                         |                       |
+| IList<>            |                        |                         |                       |
+| IAsyncEnumerable<> |                        |                         |                       |
+| IReadOnlyList<>    |                        |                         |                       |
+
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
+
