@@ -9,6 +9,11 @@ using TestFixture.Factories.System;
 using TestFixture.Providers;
 using TestFixture.Services;
 
+#if NET8_0_OR_GREATER
+using System.Collections.Frozen;
+using TestFixture.Factories.Collections.Frozen;
+#endif
+
 namespace TestFixture;
 
 internal static class SharedFixtureState
@@ -68,5 +73,9 @@ internal static class SharedFixtureState
         new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
         new GenericFactoryProvider(typeof(ImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
+
+#if NET8_0_OR_GREATER        
+        new GenericFactoryProvider(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
+#endif
     };
 }

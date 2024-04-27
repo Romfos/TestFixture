@@ -4,6 +4,10 @@ using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using TestFixture.Tests.Services;
 
+#if NET8_0_OR_GREATER     
+using System.Collections.Frozen;
+#endif
+
 namespace TestFixture.Tests;
 
 [TestClass]
@@ -175,4 +179,17 @@ public sealed class CollectionsTests
 
         fixture.Create<ImmutableQueue<int>>().Should().BeEquivalentTo(expected);
     }
+
+#if NET8_0_OR_GREATER    
+    [TestMethod]
+    public void FrozenDictionaryTest()
+    {
+        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6).ToFrozenDictionary();
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<FrozenDictionary<int, int>>().Should().BeEquivalentTo(expected);
+    }
+#endif
 }
