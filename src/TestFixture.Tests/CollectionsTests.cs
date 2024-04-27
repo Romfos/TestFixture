@@ -36,6 +36,17 @@ public sealed class CollectionsTests
     }
 
     [TestMethod]
+    public void IReadOnlyListTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IReadOnlyList<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
     public void QueueTest()
     {
         var expected = new List<int> { 1, 2, 3 };
@@ -117,6 +128,22 @@ public sealed class CollectionsTests
             .Build();
 
         fixture.Create<Dictionary<int, int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void IReadOnlyDictionaryTest()
+    {
+        var expected = new Dictionary<int, int>
+        {
+            [1] = 2,
+            [3] = 4,
+            [5] = 6,
+        };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<IReadOnlyDictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
 
     [TestMethod]

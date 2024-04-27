@@ -69,6 +69,10 @@ internal static class SharedFixtureState
         new GenericFactoryProvider(typeof(ICollection<>), typeof(ListFactory<>)),
         new GenericFactoryProvider(typeof(IList<>), typeof(ListFactory<>)),
 
+
+        new GenericFactoryProvider(typeof(IReadOnlyList<>), typeof(ListFactory<>)),
+        new GenericFactoryProvider(typeof(IReadOnlyDictionary<,>), typeof(DictionaryFactory<,>)),
+
         new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
