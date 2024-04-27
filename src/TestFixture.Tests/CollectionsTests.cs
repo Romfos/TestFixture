@@ -43,6 +43,17 @@ public sealed class CollectionsTests
     }
 
     [TestMethod]
+    public void StackTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<Stack<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
     public void IListTest()
     {
         var expected = new List<int> { 1, 2, 3 };
