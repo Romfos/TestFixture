@@ -32,6 +32,17 @@ public sealed class CollectionsTests
     }
 
     [TestMethod]
+    public void QueueTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<Queue<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
     public void IListTest()
     {
         var expected = new List<int> { 1, 2, 3 };
