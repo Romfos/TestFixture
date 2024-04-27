@@ -163,4 +163,16 @@ public sealed class CollectionsTests
 
         fixture.Create<ImmutableDictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
+
+
+    [TestMethod]
+    public void ImmutableQueueTest()
+    {
+        var expected = ImmutableQueue.Create(1, 2, 3);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ImmutableQueue<int>>().Should().BeEquivalentTo(expected);
+    }
 }
