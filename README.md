@@ -40,7 +40,7 @@ https://www.nuget.org/packages/TestFixture
 
 - BCL types:
 
-| Categoy      | Types                                                                                          |
+| Category     | Types                                                                                          |
 |--------------|------------------------------------------------------------------------------------------------|
 | Primitives   | byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool |
 | System types | Enum, Guid, Uri, Nullable<>                                                                    |
