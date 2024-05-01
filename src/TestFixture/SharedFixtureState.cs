@@ -6,19 +6,6 @@ using TestFixture.Factories.Collections.Concurrent;
 using TestFixture.Factories.Collections.Immutable;
 using TestFixture.Services;
 using TestFixture.Factories.Primitives;
-
-/* Unmerged change from project 'TestFixture (net8.0)'
-Before:
-using TestFixture.Factories.System;
-
-#if NET8_0_OR_GREATER
-After:
-using TestFixture.Factories.System;
-using TestFixture.GenericFactories;
-
-
-#if NET8_0_OR_GREATER
-*/
 using TestFixture.Factories.System;
 using TestFixture.GenericFactories;
 
