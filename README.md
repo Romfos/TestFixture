@@ -44,21 +44,23 @@ https://www.nuget.org/packages/TestFixture
 |--------------|------------------------------------------------------------------------------------------------|
 | Primitives   | byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool |
 | System types | Enum, Guid, Uri, Nullable<>                                                                    |
-| Dates        | TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)           |
+| Date & Time  | TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+), DateOnly (.NET 6+)                     |
 
 - Collections:
 
-| Generic            | Immutable              | Concurrent              | Frozen (.NET 8+ Only) |
-|--------------------|------------------------|-------------------------|-----------------------|
-| Array[]            | ImmutableArray<>       | ConcurrentDictionary<,> | FrozenDictionary<,>   |
-| List<>             | ImmutableList<>        |                         |                       |
-| Dictionary<,>      | ImmutableDictionary<,> |                         |                       |
-| Queue<>            | ImmutableQueue<>       |                         |                       |
-| IEnumerable<>      |                        |                         |                       |
-| ICollection<>      |                        |                         |                       |
-| IList<>            |                        |                         |                       |
-| IAsyncEnumerable<> |                        |                         |                       |
-| IReadOnlyList<>    |                        |                         |                       |
+| Generic               | Immutable               | Concurrent              | Frozen (.NET 8+)    |
+|-----------------------|-------------------------|-------------------------|---------------------|
+| Array[]               | ImmutableArray<>        | ConcurrentDictionary<,> | FrozenDictionary<,> |
+| List<>                | ImmutableList<>         |                         |                     |
+| Dictionary<,>         | ImmutableDictionary<,>  |                         |                     |
+| Queue<>               | ImmutableQueue<>        |                         |                     |
+| Stack<>               | IImmutableList<>        |                         |                     |
+| IEnumerable<>         | IImmutableQueue<>       |                         |                     |
+| ICollection<>         | IImmutableDictionary<,> |                         |                     |
+| IList<>               |                         |                         |                     |
+| IDictionary<,>        |                         |                         |                     |
+| IAsyncEnumerable<>    |                         |                         |                     |
+| IReadOnlyList<>       |                         |                         |                     |
+| IReadOnlyCollection<> |                         |                         |                     |
 
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
-
