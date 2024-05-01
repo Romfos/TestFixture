@@ -5,7 +5,6 @@ Small fixture library for unit tests
 # Example
 
 ```csharp
-
 [TestMethod]
 public void ExampleTest()
 {
@@ -21,7 +20,6 @@ public void ExampleTest()
     // assert
     Assert.AreEqual(3, actual);
 }
-
 ```
 
 # Supported Types
