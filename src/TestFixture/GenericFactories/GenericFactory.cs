@@ -1,10 +1,10 @@
 using TestFixture.Factories;
 
-namespace TestFixture.Providers;
+namespace TestFixture.GenericFactories;
 
-public sealed class GenericFactoryProvider(
+public sealed class GenericFactory(
     Type baseType,
-    Type factoryBaseType) : IFactoryProvider
+    Type factoryBaseType) : IGenericFactory
 {
     private readonly int baseTypeGenericArgumentCount = baseType.GetGenericArguments().Length;
 

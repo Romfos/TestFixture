@@ -47,6 +47,17 @@ public sealed class CollectionsTests
     }
 
     [TestMethod]
+    public void IReadOnlyCollectionTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IReadOnlyCollection<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
     public void QueueTest()
     {
         var expected = new List<int> { 1, 2, 3 };
@@ -130,6 +141,23 @@ public sealed class CollectionsTests
         fixture.Create<Dictionary<int, int>>().Should().BeEquivalentTo(expected);
     }
 
+
+    [TestMethod]
+    public void IDictionaryTest()
+    {
+        var expected = new Dictionary<int, int>
+        {
+            [1] = 2,
+            [3] = 4,
+            [5] = 6,
+        };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<IDictionary<int, int>>().Should().BeEquivalentTo(expected);
+    }
+
     [TestMethod]
     public void IReadOnlyDictionaryTest()
     {
@@ -205,6 +233,40 @@ public sealed class CollectionsTests
             .Build();
 
         fixture.Create<ImmutableQueue<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void IImmutableListTest()
+    {
+        var expected = ImmutableList.Create(1, 2, 3);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IImmutableList<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void IImmutableDictionaryTest()
+    {
+        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3, 4, 5, 6)
+            .Build();
+
+        fixture.Create<IImmutableDictionary<int, int>>().Should().BeEquivalentTo(expected);
+    }
+
+
+    [TestMethod]
+    public void IImmutableQueueTest()
+    {
+        var expected = ImmutableQueue.Create(1, 2, 3);
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<IImmutableQueue<int>>().Should().BeEquivalentTo(expected);
     }
 
 #if NET8_0_OR_GREATER    

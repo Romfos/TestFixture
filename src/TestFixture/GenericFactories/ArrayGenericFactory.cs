@@ -1,9 +1,9 @@
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 
-namespace TestFixture.Providers;
+namespace TestFixture.GenericFactories;
 
-internal sealed class ArrayFactoryProvider : IFactoryProvider
+internal sealed class ArrayGenericFactory : IGenericFactory
 {
     public IFactory? Resolve(Type type)
     {

@@ -1,8 +1,8 @@
 using TestFixture.Factories;
 
-namespace TestFixture.Providers;
+namespace TestFixture.GenericFactories;
 
-internal sealed class EnumFactoryProvider : IFactoryProvider
+internal sealed class EnumGenericFactory : IGenericFactory
 {
     public IFactory? Resolve(Type type)
     {

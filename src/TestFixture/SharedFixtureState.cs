@@ -4,10 +4,23 @@ using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 using TestFixture.Factories.Collections.Concurrent;
 using TestFixture.Factories.Collections.Immutable;
-using TestFixture.Factories.Primitives;
-using TestFixture.Factories.System;
-using TestFixture.Providers;
 using TestFixture.Services;
+using TestFixture.Factories.Primitives;
+
+/* Unmerged change from project 'TestFixture (net8.0)'
+Before:
+using TestFixture.Factories.System;
+
+#if NET8_0_OR_GREATER
+After:
+using TestFixture.Factories.System;
+using TestFixture.GenericFactories;
+
+
+#if NET8_0_OR_GREATER
+*/
+using TestFixture.Factories.System;
+using TestFixture.GenericFactories;
 
 #if NET8_0_OR_GREATER
 using System.Collections.Frozen;
@@ -51,35 +64,40 @@ internal static class SharedFixtureState
 #endif
     };
 
-    internal static readonly IFactoryProvider[] providers =
+    internal static readonly IGenericFactory[] genericFactories =
     {
-        new EnumFactoryProvider(),
-        new GenericFactoryProvider(typeof(Nullable<>), typeof(NullableFactory<>)),
+        new EnumGenericFactory(),
+        new GenericFactory(typeof(Nullable<>), typeof(NullableFactory<>)),
 
-        new ArrayFactoryProvider(),
-        new GenericFactoryProvider(typeof(List<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
-        new GenericFactoryProvider(typeof(Queue<>), typeof(QueueFactory<>)),
-        new GenericFactoryProvider(typeof(Stack<>), typeof(StackFactory<>)),
+        new ArrayGenericFactory(),
+        new GenericFactory(typeof(List<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
+        new GenericFactory(typeof(Queue<>), typeof(QueueFactory<>)),
+        new GenericFactory(typeof(Stack<>), typeof(StackFactory<>)),
 
-        new GenericFactoryProvider(typeof(ConcurrentDictionary<,>), typeof(ConcurrentDictionaryFactory<,>)),
+        new GenericFactory(typeof(ConcurrentDictionary<,>), typeof(ConcurrentDictionaryFactory<,>)),
 
-        new GenericFactoryProvider(typeof(IEnumerable<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(IAsyncEnumerable<>), typeof(AsyncEnumerableFactory<>)),
-        new GenericFactoryProvider(typeof(ICollection<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(IList<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IEnumerable<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IAsyncEnumerable<>), typeof(AsyncEnumerableFactory<>)),
+        new GenericFactory(typeof(ICollection<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IList<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IDictionary<,>), typeof(DictionaryFactory<,>)),
 
+        new GenericFactory(typeof(IReadOnlyList<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IReadOnlyCollection<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(IReadOnlyDictionary<,>), typeof(DictionaryFactory<,>)),
 
-        new GenericFactoryProvider(typeof(IReadOnlyList<>), typeof(ListFactory<>)),
-        new GenericFactoryProvider(typeof(IReadOnlyDictionary<,>), typeof(DictionaryFactory<,>)),
+        new GenericFactory(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
+        new GenericFactory(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
+        new GenericFactory(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
+        new GenericFactory(typeof(ImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
 
-        new GenericFactoryProvider(typeof(ImmutableArray<>), typeof(ImmutableArrayFactory<>)),
-        new GenericFactoryProvider(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
-        new GenericFactoryProvider(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
-        new GenericFactoryProvider(typeof(ImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
+        new GenericFactory(typeof(IImmutableList<>), typeof(ImmutableListFactory<>)),
+        new GenericFactory(typeof(IImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
+        new GenericFactory(typeof(IImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
 
 #if NET8_0_OR_GREATER        
-        new GenericFactoryProvider(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
+        new GenericFactory(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
 #endif
     };
 }

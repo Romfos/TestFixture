@@ -26,19 +26,29 @@ public void ExampleTest()
 
 # Supported Types
 
-- Base: `byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool`
-- Enums
-- System: `Guid, Uri, Nullable<>`
-- Dates: `TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+ only), DateOnly (.NET 6+ only)`
+- BCL types:
+
+| Category     | Types                                                                                          |
+|--------------|------------------------------------------------------------------------------------------------|
+| Primitives   | byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, string, bool |
+| System types | Enum, Guid, Uri, Nullable<>                                                                    |
+| Date & Time  | TimeSpan, DateTime, DateTimeOffset, TimeOnly (.NET 6+), DateOnly (.NET 6+)                     |
+
 - Collections:
 
-| Generic       | Interfaces            | Immutable              | Concurrent              | Frozen              |
-|---------------|-----------------------|------------------------|-------------------------|---------------------|
-| 1d arrays     | IEnumerable<>         | ImmutableArray<>       | ConcurrentDictionary<,> | FrozenDictionary<,> |
-| List<>        | ICollection<>         | ImmutableList<>        |                         |                     |
-| Dictionary<,> | IList<>               | ImmutableDictionary<,> |                         |                     |
-| Queue<>       | IAsyncEnumerable<>    | ImmutableQueue<>       |                         |                     |
-|               | IReadOnlyList<>       |                        |                         |                     |
-|               | IReadOnlyDictionary<> |                        |                         |                     |
+| Generic               | Immutable               | Concurrent              | Frozen (.NET 8+)    |
+|-----------------------|-------------------------|-------------------------|---------------------|
+| Array[]               | ImmutableArray<>        | ConcurrentDictionary<,> | FrozenDictionary<,> |
+| List<>                | ImmutableList<>         |                         |                     |
+| Dictionary<,>         | ImmutableDictionary<,>  |                         |                     |
+| Queue<>               | ImmutableQueue<>        |                         |                     |
+| Stack<>               | IImmutableList<>        |                         |                     |
+| IEnumerable<>         | IImmutableQueue<>       |                         |                     |
+| ICollection<>         | IImmutableDictionary<,> |                         |                     |
+| IList<>               |                         |                         |                     |
+| IDictionary<,>        |                         |                         |                     |
+| IAsyncEnumerable<>    |                         |                         |                     |
+| IReadOnlyList<>       |                         |                         |                     |
+| IReadOnlyCollection<> |                         |                         |                     |
 
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)

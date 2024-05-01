@@ -1,13 +1,14 @@
 using TestFixture.Factories;
-using TestFixture.Providers;
+using TestFixture.GenericFactories;
 
 namespace TestFixture;
 
 public sealed class Fixture
 {
     private Dictionary<Type, object>? instances;
+    private Dictionary<Type, Func<Fixture, object>>? functionalFactories;
     private Dictionary<Type, IFactory>? factories;
-    private List<IFactoryProvider>? providers;
+    private List<IGenericFactory>? genericFactories;
 
     public void RegisterInstance<T>(T value)
         where T : notnull
@@ -27,6 +28,31 @@ public sealed class Fixture
         else
         {
             instances[type] = value;
+        }
+    }
+
+    public void RegisterFactory<T>(Func<Fixture, T> factory)
+    {
+        RegisterInstance(typeof(T), factory);
+    }
+
+    public void RegisterFactory<T>(Func<T> factory) where T : notnull
+    {
+        RegisterFactory(typeof(T), x => factory());
+    }
+
+    public void RegisterFactory(Type type, Func<Fixture, object> factory)
+    {
+        if (functionalFactories == null)
+        {
+            functionalFactories = new()
+            {
+                [type] = factory
+            };
+        }
+        else
+        {
+            functionalFactories[type] = factory;
         }
     }
 
@@ -50,15 +76,15 @@ public sealed class Fixture
         }
     }
 
-    public void RegisterProvider(IFactoryProvider factoryProvider)
+    public void RegisterGenericFactory(IGenericFactory genericFactory)
     {
-        if (providers == null)
+        if (genericFactories == null)
         {
-            providers = [factoryProvider];
+            genericFactories = [genericFactory];
         }
         else
         {
-            providers.Add(factoryProvider);
+            genericFactories.Add(genericFactory);
         }
     }
 
@@ -79,18 +105,25 @@ public sealed class Fixture
             return value;
         }
 
+        if (functionalFactories != null && functionalFactories.TryGetValue(type, out var functionalFactory))
+        {
+            return functionalFactory(this);
+        }
+
         if (factories != null && factories.TryGetValue(type, out var factory))
         {
             return factory.Create(this);
         }
 
-        if (providers != null)
+        if (genericFactories != null)
         {
-            factory = providers.Select(provider => provider.Resolve(type)).FirstOrDefault(x => x != null);
-            if (factory != null)
+            foreach (var genericFactory in genericFactories)
             {
-                RegisterFactory(type, factory);
-                return factory.Create(this);
+                if (genericFactory.Resolve(type) is IFactory typeFactory)
+                {
+                    RegisterFactory(type, typeFactory);
+                    return typeFactory.Create(this);
+                }
             }
         }
 
@@ -100,9 +133,17 @@ public sealed class Fixture
         }
 
         factory = SharedFixtureState.factories.GetOrAdd(type, type =>
-            SharedFixtureState.providers
-                .Select(provider => provider.Resolve(type))
-                .FirstOrDefault(x => x != null) ?? new DefaultClassFactory(type));
+        {
+            foreach (var genericFactory in SharedFixtureState.genericFactories)
+            {
+                if (genericFactory.Resolve(type) is IFactory factory)
+                {
+                    return factory;
+                }
+            }
+
+            return new DefaultClassFactory(type);
+        });
 
         return factory.Create(this);
     }
