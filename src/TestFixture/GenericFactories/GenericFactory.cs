@@ -2,12 +2,8 @@ using TestFixture.Factories;
 
 namespace TestFixture.GenericFactories;
 
-public sealed class GenericFactory(
-    Type baseType,
-    Type factoryBaseType) : IGenericFactory
+public sealed class GenericFactory(Type genericType, Type genericTypeFactoryType) : IGenericFactory
 {
-    private readonly int baseTypeGenericArgumentCount = baseType.GetGenericArguments().Length;
-
     public IFactory? Resolve(Type type)
     {
         if (!type.IsGenericType)
@@ -15,20 +11,13 @@ public sealed class GenericFactory(
             return null;
         }
 
-        var arguments = type.GetGenericArguments();
-        try
-        {
-            if (arguments.Length != baseTypeGenericArgumentCount || type != baseType.MakeGenericType(arguments))
-            {
-                return null;
-            }
-        }
-        catch (ArgumentException)
+        if (genericType != type.GetGenericTypeDefinition())
         {
             return null;
         }
 
-        var factoryType = factoryBaseType.MakeGenericType(arguments);
+        var arguments = type.GetGenericArguments();
+        var factoryType = genericTypeFactoryType.MakeGenericType(arguments);
         return Activator.CreateInstance(factoryType) as IFactory;
     }
 }
