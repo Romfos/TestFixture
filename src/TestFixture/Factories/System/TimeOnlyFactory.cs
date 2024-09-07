@@ -1,8 +1,8 @@
+#if NET6_0_OR_GREATER
+
 using TestFixture.Services;
 
-namespace TestFixture.Factories.Primitives;
-
-#if NET6_0_OR_GREATER
+namespace TestFixture.Factories.System;
 
 internal sealed class TimeOnlyFactory : IFactory
 {
