@@ -45,7 +45,7 @@ internal static class SharedFixtureState
         [typeof(TimeSpan)] = new TimeSpanFactory(),
         [typeof(DateTime)] = new DateTimeFactory(),
         [typeof(DateTimeOffset)] = new DateTimeOffsetFactory(),
-#if NET6_0_OR_GREATER
+#if NET
         [typeof(TimeOnly)] = new TimeOnlyFactory(),
         [typeof(DateOnly)] = new DateOnlyFactory(),
 #endif

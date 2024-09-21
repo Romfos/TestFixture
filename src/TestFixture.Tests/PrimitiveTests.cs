@@ -205,7 +205,7 @@ public sealed class PrimitiveTypesFactoryTests
         fixture.Create<ushort>().Should().Be((ushort)expected);
     }
 
-#if NET6_0_OR_GREATER
+#if NET
 
     [TestMethod]
     public void DateOnlyTest()
