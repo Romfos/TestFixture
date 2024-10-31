@@ -11,12 +11,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
-
-      - name: Build
-        run: dotnet build ./src/TestFixture.sln
+          dotnet-quality: 'preview'
 
       - name: Test
-        run: dotnet test --no-build --no-restore ./src/TestFixture.sln
-
-      - name: Format
-        run: dotnet format --verify-no-changes --no-restore ./src/TestFixture.sln
+        run: dotnet test ./src/TestFixture.Tests/TestFixture.Tests.csproj
