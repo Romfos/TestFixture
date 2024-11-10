@@ -29,7 +29,7 @@ public void ExampleTest()
 
 # Supported platforms
 
-- .NET 6 or newer
+- .NET 8+
 - .NET Framework 4.6.2+
 
 # Nuget

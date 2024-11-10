@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using TestFixture.Tests.Services;
 
-#if NET8_0_OR_GREATER     
+#if NET     
 using System.Collections.Frozen;
 #endif
 
@@ -269,7 +269,7 @@ public sealed class CollectionsTests
         fixture.Create<IImmutableQueue<int>>().Should().BeEquivalentTo(expected);
     }
 
-#if NET8_0_OR_GREATER    
+#if NET    
     [TestMethod]
     public void FrozenDictionaryTest()
     {

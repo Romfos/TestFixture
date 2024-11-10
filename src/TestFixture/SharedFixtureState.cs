@@ -9,7 +9,7 @@ using TestFixture.Factories.Primitives;
 using TestFixture.Factories.System;
 using TestFixture.GenericFactories;
 
-#if NET8_0_OR_GREATER
+#if NET
 using System.Collections.Frozen;
 using TestFixture.Factories.Collections.Frozen;
 #endif
@@ -83,7 +83,7 @@ internal static class SharedFixtureState
         new GenericFactory(typeof(IImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
         new GenericFactory(typeof(IImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
 
-#if NET8_0_OR_GREATER        
+#if NET        
         new GenericFactory(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
 #endif
     };
