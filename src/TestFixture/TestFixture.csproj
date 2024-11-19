@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/Romfos/TestFixture</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.jpg</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>  
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
