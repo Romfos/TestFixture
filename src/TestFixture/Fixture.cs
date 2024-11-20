@@ -93,9 +93,9 @@ public sealed class Fixture
         return (T)Create(typeof(T));
     }
 
-    public IEnumerable<T> Create<T>(int number)
+    public IEnumerable<T> Create<T>(int count)
     {
-        return Enumerable.Range(0, number).Select(x => Create<T>());
+        return Enumerable.Range(0, count).Select(x => Create<T>());
     }
 
     public object Create(Type type)
