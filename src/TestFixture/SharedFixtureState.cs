@@ -63,6 +63,9 @@ internal static class SharedFixtureState
         new GenericFactory(typeof(Stack<>), typeof(StackFactory<>)),
 
         new GenericFactory(typeof(ConcurrentDictionary<,>), typeof(ConcurrentDictionaryFactory<,>)),
+        new GenericFactory(typeof(ConcurrentQueue<>), typeof(ConcurrentQueueFactory<>)),
+        new GenericFactory(typeof(ConcurrentBag<>), typeof(ConcurrentBagFactory<>)),
+        new GenericFactory(typeof(ConcurrentStack<>), typeof(ConcurrentStackFactory<>)),
 
         new GenericFactory(typeof(IEnumerable<>), typeof(ListFactory<>)),
         new GenericFactory(typeof(IAsyncEnumerable<>), typeof(AsyncEnumerableFactory<>)),

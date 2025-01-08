@@ -269,6 +269,40 @@ public sealed class CollectionsTests
         fixture.Create<IImmutableQueue<int>>().Should().BeEquivalentTo(expected);
     }
 
+    [TestMethod]
+    public void ConcurrentBagTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ConcurrentBag<int>>().Should().BeEquivalentTo(expected);
+    }
+
+
+    [TestMethod]
+    public void ConcurrentQueueFactoryTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ConcurrentQueue<int>>().Should().BeEquivalentTo(expected);
+    }
+
+    [TestMethod]
+    public void ConcurrentStackTest()
+    {
+        var expected = new List<int> { 1, 2, 3 };
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        fixture.Create<ConcurrentStack<int>>().Should().BeEquivalentTo(expected);
+    }
+
 #if NET    
     [TestMethod]
     public void FrozenDictionaryTest()
