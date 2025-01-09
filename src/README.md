@@ -37,9 +37,9 @@ public void ExampleTest()
 | Generic               | Immutable               | Concurrent              | Frozen (.NET 8+)    |
 |-----------------------|-------------------------|-------------------------|---------------------|
 | Array[]               | ImmutableArray<>        | ConcurrentDictionary<,> | FrozenDictionary<,> |
-| List<>                | ImmutableList<>         |                         |                     |
-| Dictionary<,>         | ImmutableDictionary<,>  |                         |                     |
-| Queue<>               | ImmutableQueue<>        |                         |                     |
+| List<>                | ImmutableList<>         | ConcurrentBag<>         |                     |
+| Dictionary<,>         | ImmutableDictionary<,>  | ConcurrentQueue<>       |                     |
+| Queue<>               | ImmutableQueue<>        | ConcurrentStack<>       |                     |
 | Stack<>               | IImmutableList<>        |                         |                     |
 | IEnumerable<>         | IImmutableQueue<>       |                         |                     |
 | ICollection<>         | IImmutableDictionary<,> |                         |                     |
