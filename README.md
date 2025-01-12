@@ -27,11 +27,6 @@ public void ExampleTest()
 
 ```
 
-# Supported platforms
-
-- .NET 8+
-- .NET Framework 4.6.2+
-
 # Nuget
 
 https://www.nuget.org/packages/TestFixture
