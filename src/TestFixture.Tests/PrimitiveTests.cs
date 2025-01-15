@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFixture.Tests.Services;
 
@@ -15,7 +14,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<int>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<int>());
     }
 
     [TestMethod]
@@ -26,7 +25,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<Guid>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<Guid>());
     }
 
     [TestMethod]
@@ -37,7 +36,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<string>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<string>());
     }
 
     [TestMethod]
@@ -48,7 +47,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<long>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<long>());
     }
 
     [TestMethod]
@@ -59,7 +58,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<DateTime>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<DateTime>());
     }
 
     [TestMethod]
@@ -70,7 +69,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<TimeSpan>().Should().Be(expected.TimeOfDay);
+        Assert.AreEqual(expected.TimeOfDay, fixture.Create<TimeSpan>());
     }
 
     [TestMethod]
@@ -81,7 +80,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<bool>().Should().BeTrue();
+        Assert.IsTrue(fixture.Create<bool>());
     }
 
     [TestMethod]
@@ -92,7 +91,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<Uri>().Should().Be(new Uri($"http://{expected}.com"));
+        Assert.AreEqual(new Uri($"http://{expected}.com"), fixture.Create<Uri>());
     }
 
     [TestMethod]
@@ -103,7 +102,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<byte>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<byte>());
     }
 
     [TestMethod]
@@ -114,7 +113,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<char>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<char>());
     }
 
     [TestMethod]
@@ -125,7 +124,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<decimal>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<decimal>());
     }
 
     [TestMethod]
@@ -136,7 +135,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<double>().Should().Be(expected);
+        Assert.AreEqual(expected, fixture.Create<double>());
     }
 
     [TestMethod]
@@ -147,7 +146,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<float>().Should().Be((float)expected);
+        Assert.AreEqual((float)expected, fixture.Create<float>());
     }
 
     [TestMethod]
@@ -158,7 +157,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<sbyte>().Should().Be((sbyte)expected);
+        Assert.AreEqual((sbyte)expected, fixture.Create<sbyte>());
     }
 
     [TestMethod]
@@ -169,7 +168,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<short>().Should().Be((short)expected);
+        Assert.AreEqual((short)expected, fixture.Create<short>());
     }
 
     [TestMethod]
@@ -180,7 +179,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<uint>().Should().Be((uint)expected);
+        Assert.AreEqual((uint)expected, fixture.Create<uint>());
     }
 
     [TestMethod]
@@ -191,7 +190,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<ulong>().Should().Be((ulong)expected / 2);
+        Assert.AreEqual((ulong)expected / 2, fixture.Create<ulong>());
     }
 
     [TestMethod]
@@ -202,7 +201,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<ushort>().Should().Be((ushort)expected);
+        Assert.AreEqual((ushort)expected, fixture.Create<ushort>());
     }
 
 #if NET
@@ -215,7 +214,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<DateOnly>().Should().Be(DateOnly.FromDateTime(expected));
+        Assert.AreEqual(DateOnly.FromDateTime(expected), fixture.Create<DateOnly>());
     }
 
     [TestMethod]
@@ -226,7 +225,7 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        fixture.Create<TimeOnly>().Should().Be(TimeOnly.FromDateTime(expected));
+        Assert.AreEqual(TimeOnly.FromDateTime(expected), fixture.Create<TimeOnly>());
     }
 
 #endif

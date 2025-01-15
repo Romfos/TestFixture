@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFixture.Tests.Services;
 
@@ -10,11 +9,10 @@ public sealed class NullableTests
     [TestMethod]
     public void NullableTest()
     {
-        var expected = 123;
         var fixture = new TestFixtureBuilder()
-            .With(expected)
+            .With(123)
             .Build();
 
-        fixture.Create<int?>().Should().Be(new int?(expected));
+        Assert.IsTrue(fixture.Create<int?>() is 123);
     }
 }

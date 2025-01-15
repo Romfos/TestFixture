@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFixture.Tests.Services;
 
@@ -11,8 +10,8 @@ public sealed class ClassTests
     {
         public Class1(int a, int b)
         {
-            a.Should().Be(1);
-            b.Should().Be(2);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(2, b);
         }
     }
 
@@ -30,8 +29,8 @@ public sealed class ClassTests
     {
         public Class2(int a, int b)
         {
-            a.Should().Be(1);
-            b.Should().Be(2);
+            Assert.AreEqual(1, a);
+            Assert.AreEqual(2, b);
         }
 
 
@@ -55,8 +54,8 @@ public sealed class ClassTests
     {
         public Class3(int a, Class4 nestedClass)
         {
-            a.Should().Be(1);
-            nestedClass.Should().NotBeNull();
+            Assert.AreEqual(1, a);
+            Assert.IsNotNull(nestedClass);
         }
     }
 
@@ -64,7 +63,7 @@ public sealed class ClassTests
     {
         public Class4(int b)
         {
-            b.Should().Be(2);
+            Assert.AreEqual(2, b);
         }
     }
 
@@ -78,7 +77,7 @@ public sealed class ClassTests
         fixture.Create<Class3>();
     }
 
-    public class Class5
+    public record Class5
     {
         public string? Foo { get; set; }
         public string? Bar { get; }
@@ -97,6 +96,6 @@ public sealed class ClassTests
             .With("x")
             .Build();
 
-        fixture.Create<Class5>().Should().BeEquivalentTo(expected);
+        Assert.AreEqual(expected, fixture.Create<Class5>());
     }
 }

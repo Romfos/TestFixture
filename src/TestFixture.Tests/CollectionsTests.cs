@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
@@ -16,303 +15,293 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ArrayTest()
     {
-        var expected = new[] { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<int[]>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<int[]>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ListTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<List<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<List<int>>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void IReadOnlyListTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IReadOnlyList<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IReadOnlyList<int>>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void IReadOnlyCollectionTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IReadOnlyCollection<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IReadOnlyCollection<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void QueueTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<Queue<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<Queue<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void StackTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<Stack<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<Stack<int>>().ToList() is [3, 2, 1]);
     }
 
     [TestMethod]
     public void IListTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IList<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IList<int>>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void IEnumerableTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IEnumerable<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IEnumerable<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public async Task IAsyncEnumerableEnumerableTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
         var actual = await fixture.Create<IAsyncEnumerable<int>>().ToListAsync();
 
-        actual.Should().BeEquivalentTo(expected);
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ICollectionTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ICollection<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ICollection<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void DictionaryTest()
     {
-        var expected = new Dictionary<int, int>
-        {
-            [1] = 2,
-            [3] = 4,
-            [5] = 6,
-        };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<Dictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<Dictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
 
     [TestMethod]
     public void IDictionaryTest()
     {
-        var expected = new Dictionary<int, int>
-        {
-            [1] = 2,
-            [3] = 4,
-            [5] = 6,
-        };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<IDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
     [TestMethod]
     public void IReadOnlyDictionaryTest()
     {
-        var expected = new Dictionary<int, int>
-        {
-            [1] = 2,
-            [3] = 4,
-            [5] = 6,
-        };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<IReadOnlyDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IReadOnlyDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
     [TestMethod]
     public void ConcurrentDictionary()
     {
-        var expected = new Dictionary<int, int>
-        {
-            [1] = 2,
-            [3] = 4,
-            [5] = 6,
-        };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<ConcurrentDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ConcurrentDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
     [TestMethod]
     public void ImmutableArrayTest()
     {
-        var expected = ImmutableArray.Create(1, 2, 3);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ImmutableArray<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ImmutableArray<int>>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ImmutableListTest()
     {
-        var expected = ImmutableList.Create(1, 2, 3);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ImmutableList<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ImmutableList<int>>() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ImmutableDictionaryTest()
     {
-        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<ImmutableDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ImmutableDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
 
     [TestMethod]
     public void ImmutableQueueTest()
     {
-        var expected = ImmutableQueue.Create(1, 2, 3);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ImmutableQueue<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ImmutableQueue<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void IImmutableListTest()
     {
-        var expected = ImmutableList.Create(1, 2, 3);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IImmutableList<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IImmutableList<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void IImmutableDictionaryTest()
     {
-        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<IImmutableDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IImmutableDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 
 
     [TestMethod]
     public void IImmutableQueueTest()
     {
-        var expected = ImmutableQueue.Create(1, 2, 3);
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<IImmutableQueue<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<IImmutableQueue<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ConcurrentBagTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ConcurrentBag<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ConcurrentBag<int>>().ToList() is [3, 2, 1]);
     }
 
 
     [TestMethod]
     public void ConcurrentQueueFactoryTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ConcurrentQueue<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ConcurrentQueue<int>>().ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
     public void ConcurrentStackTest()
     {
-        var expected = new List<int> { 1, 2, 3 };
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3)
             .Build();
 
-        fixture.Create<ConcurrentStack<int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<ConcurrentStack<int>>().ToList() is [3, 2, 1]);
     }
 
 #if NET    
     [TestMethod]
     public void FrozenDictionaryTest()
     {
-        var expected = ImmutableDictionary.Create<int, int>().Add(1, 2).Add(3, 4).Add(5, 6).ToFrozenDictionary();
         var fixture = new TestFixtureBuilder()
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        fixture.Create<FrozenDictionary<int, int>>().Should().BeEquivalentTo(expected);
+        Assert.IsTrue(fixture.Create<FrozenDictionary<int, int>>().ToList() is
+            [
+            { Key: 1, Value: 2 },
+            { Key: 3, Value: 4 },
+            { Key: 5, Value: 6 }
+            ]);
     }
 #endif
 }

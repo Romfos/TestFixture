@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFixture.Tests.Services;
 
@@ -21,6 +20,6 @@ public sealed class EnumTests
             .With(2)
             .Build();
 
-        fixture.Create<TestEnum>().Should().Be(TestEnum.C);
+        Assert.AreEqual(TestEnum.C, fixture.Create<TestEnum>());
     }
 }
