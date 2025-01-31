@@ -13,6 +13,8 @@ public sealed class NullableTests
             .With(123)
             .Build();
 
-        Assert.IsTrue(fixture.Create<int?>() is 123);
+        var actual = fixture.Create<int?>();
+
+        Assert.IsTrue(actual is 123);
     }
 }

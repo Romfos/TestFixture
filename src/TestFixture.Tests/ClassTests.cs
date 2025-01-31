@@ -22,7 +22,7 @@ public sealed class ClassTests
             .With(1, 2)
             .Build();
 
-        fixture.Create<Class1>();
+        var actual = fixture.Create<Class1>();
     }
 
     private class Class2
@@ -32,7 +32,6 @@ public sealed class ClassTests
             Assert.AreEqual(1, a);
             Assert.AreEqual(2, b);
         }
-
 
         public Class2(int a)
         {
@@ -47,7 +46,7 @@ public sealed class ClassTests
             .With(1, 2)
             .Build();
 
-        fixture.Create<Class2>();
+        var actual = fixture.Create<Class2>();
     }
 
     private class Class3
@@ -74,7 +73,7 @@ public sealed class ClassTests
             .With(1, 2)
             .Build();
 
-        fixture.Create<Class3>();
+        var actual = fixture.Create<Class3>();
     }
 
     public record Class5
@@ -82,7 +81,6 @@ public sealed class ClassTests
         public string? Foo { get; set; }
         public string? Bar { get; }
     }
-
 
     [TestMethod]
     public void ClassWithProperties()
@@ -96,6 +94,9 @@ public sealed class ClassTests
             .With("x")
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<Class5>());
+        var actual = fixture.Create<Class5>();
+
+        Assert.AreEqual(expected, actual);
     }
 }
+

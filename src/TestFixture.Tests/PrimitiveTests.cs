@@ -14,7 +14,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<int>());
+        var actual = fixture.Create<int>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -25,7 +27,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<Guid>());
+        var actual = fixture.Create<Guid>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -36,7 +40,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<string>());
+        var actual = fixture.Create<string>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -47,7 +53,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<long>());
+        var actual = fixture.Create<long>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -58,7 +66,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<DateTime>());
+        var actual = fixture.Create<DateTime>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -69,7 +79,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected.TimeOfDay, fixture.Create<TimeSpan>());
+        var actual = fixture.Create<TimeSpan>();
+
+        Assert.AreEqual(expected.TimeOfDay, actual);
     }
 
     [TestMethod]
@@ -80,7 +92,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.IsTrue(fixture.Create<bool>());
+        var actual = fixture.Create<bool>();
+
+        Assert.IsTrue(actual);
     }
 
     [TestMethod]
@@ -91,7 +105,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(new Uri($"http://{expected}.com"), fixture.Create<Uri>());
+        var actual = fixture.Create<Uri>();
+
+        Assert.AreEqual(new Uri($"http://{expected}.com"), actual);
     }
 
     [TestMethod]
@@ -102,7 +118,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<byte>());
+        var actual = fixture.Create<byte>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -113,7 +131,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<char>());
+        var actual = fixture.Create<char>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -124,7 +144,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<decimal>());
+        var actual = fixture.Create<decimal>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -135,7 +157,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(expected, fixture.Create<double>());
+        var actual = fixture.Create<double>();
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -146,7 +170,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((float)expected, fixture.Create<float>());
+        var actual = fixture.Create<float>();
+
+        Assert.AreEqual((float)expected, actual);
     }
 
     [TestMethod]
@@ -157,7 +183,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((sbyte)expected, fixture.Create<sbyte>());
+        var actual = fixture.Create<sbyte>();
+
+        Assert.AreEqual((sbyte)expected, actual);
     }
 
     [TestMethod]
@@ -168,7 +196,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((short)expected, fixture.Create<short>());
+        var actual = fixture.Create<short>();
+
+        Assert.AreEqual((short)expected, actual);
     }
 
     [TestMethod]
@@ -179,7 +209,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((uint)expected, fixture.Create<uint>());
+        var actual = fixture.Create<uint>();
+
+        Assert.AreEqual((uint)expected, actual);
     }
 
     [TestMethod]
@@ -190,7 +222,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((ulong)expected / 2, fixture.Create<ulong>());
+        var actual = fixture.Create<ulong>();
+
+        Assert.AreEqual((ulong)expected / 2, actual);
     }
 
     [TestMethod]
@@ -201,7 +235,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual((ushort)expected, fixture.Create<ushort>());
+        var actual = fixture.Create<ushort>();
+
+        Assert.AreEqual((ushort)expected, actual);
     }
 
 #if NET
@@ -214,7 +250,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(DateOnly.FromDateTime(expected), fixture.Create<DateOnly>());
+        var actual = fixture.Create<DateOnly>();
+
+        Assert.AreEqual(DateOnly.FromDateTime(expected), actual);
     }
 
     [TestMethod]
@@ -225,7 +263,9 @@ public sealed class PrimitiveTypesFactoryTests
             .With(expected)
             .Build();
 
-        Assert.AreEqual(TimeOnly.FromDateTime(expected), fixture.Create<TimeOnly>());
+        var actual = fixture.Create<TimeOnly>();
+
+        Assert.AreEqual(TimeOnly.FromDateTime(expected), actual);
     }
 
 #endif

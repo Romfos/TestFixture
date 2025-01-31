@@ -19,7 +19,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<int[]>() is [1, 2, 3]);
+        var actual = fixture.Create<int[]>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -29,7 +31,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<List<int>>() is [1, 2, 3]);
+        var actual = fixture.Create<List<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -39,7 +43,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IReadOnlyList<int>>() is [1, 2, 3]);
+        var actual = fixture.Create<IReadOnlyList<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -49,7 +55,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IReadOnlyCollection<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<IReadOnlyCollection<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -59,7 +67,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<Queue<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<Queue<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -69,7 +79,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<Stack<int>>().ToList() is [3, 2, 1]);
+        var actual = fixture.Create<Stack<int>>();
+
+        Assert.IsTrue(actual.ToList() is [3, 2, 1]);
     }
 
     [TestMethod]
@@ -79,7 +91,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IList<int>>() is [1, 2, 3]);
+        var actual = fixture.Create<IList<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -89,7 +103,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IEnumerable<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<IEnumerable<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -111,7 +127,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ICollection<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<ICollection<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -121,14 +139,15 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<Dictionary<int, int>>().ToList() is
+        var actual = fixture.Create<Dictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
             { Key: 5, Value: 6 }
             ]);
     }
-
 
     [TestMethod]
     public void IDictionaryTest()
@@ -137,7 +156,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<IDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
@@ -152,7 +173,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IReadOnlyDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<IReadOnlyDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
@@ -167,7 +190,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ConcurrentDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<ConcurrentDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
@@ -182,7 +207,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ImmutableArray<int>>() is [1, 2, 3]);
+        var actual = fixture.Create<ImmutableArray<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -192,7 +219,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ImmutableList<int>>() is [1, 2, 3]);
+        var actual = fixture.Create<ImmutableList<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -202,14 +231,15 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ImmutableDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<ImmutableDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
             { Key: 5, Value: 6 }
             ]);
     }
-
 
     [TestMethod]
     public void ImmutableQueueTest()
@@ -218,7 +248,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ImmutableQueue<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<ImmutableQueue<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -228,7 +260,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IImmutableList<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<IImmutableList<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -238,14 +272,15 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IImmutableDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<IImmutableDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },
             { Key: 5, Value: 6 }
             ]);
     }
-
 
     [TestMethod]
     public void IImmutableQueueTest()
@@ -254,7 +289,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<IImmutableQueue<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<IImmutableQueue<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -264,9 +301,10 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ConcurrentBag<int>>().ToList() is [3, 2, 1]);
-    }
+        var actual = fixture.Create<ConcurrentBag<int>>();
 
+        Assert.IsTrue(actual.ToList() is [3, 2, 1]);
+    }
 
     [TestMethod]
     public void ConcurrentQueueFactoryTest()
@@ -275,7 +313,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ConcurrentQueue<int>>().ToList() is [1, 2, 3]);
+        var actual = fixture.Create<ConcurrentQueue<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
     }
 
     [TestMethod]
@@ -285,7 +325,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3)
             .Build();
 
-        Assert.IsTrue(fixture.Create<ConcurrentStack<int>>().ToList() is [3, 2, 1]);
+        var actual = fixture.Create<ConcurrentStack<int>>();
+
+        Assert.IsTrue(actual.ToList() is [3, 2, 1]);
     }
 
 #if NET    
@@ -296,7 +338,9 @@ public sealed class CollectionsTests
             .With(1, 2, 3, 4, 5, 6)
             .Build();
 
-        Assert.IsTrue(fixture.Create<FrozenDictionary<int, int>>().ToList() is
+        var actual = fixture.Create<FrozenDictionary<int, int>>();
+
+        Assert.IsTrue(actual.ToList() is
             [
             { Key: 1, Value: 2 },
             { Key: 3, Value: 4 },

@@ -20,6 +20,8 @@ public sealed class EnumTests
             .With(2)
             .Build();
 
-        Assert.AreEqual(TestEnum.C, fixture.Create<TestEnum>());
+        var actual = fixture.Create<TestEnum>();
+
+        Assert.AreEqual(TestEnum.C, actual);
     }
 }
