@@ -43,10 +43,12 @@ public void ExampleTest()
 | Stack<>               | IImmutableList<>        |                         |                     |
 | IEnumerable<>         | IImmutableQueue<>       |                         |                     |
 | ICollection<>         | IImmutableDictionary<,> |                         |                     |
+| IQueryable<>          |                         |                         |                     |
 | IList<>               |                         |                         |                     |
 | IDictionary<,>        |                         |                         |                     |
 | IAsyncEnumerable<>    |                         |                         |                     |
 | IReadOnlyList<>       |                         |                         |                     |
 | IReadOnlyCollection<> |                         |                         |                     |
+
 
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)

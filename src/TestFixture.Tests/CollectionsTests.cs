@@ -109,6 +109,19 @@ public sealed class CollectionsTests
     }
 
     [TestMethod]
+    public void IQueryableTest()
+    {
+        var fixture = new TestFixtureBuilder()
+            .With(1, 2, 3)
+            .Build();
+
+        var actual = fixture.Create<IQueryable<int>>();
+
+        Assert.IsTrue(actual.ToList() is [1, 2, 3]);
+    }
+
+
+    [TestMethod]
     public async Task IAsyncEnumerableEnumerableTest()
     {
         var fixture = new TestFixtureBuilder()

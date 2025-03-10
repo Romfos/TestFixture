@@ -72,6 +72,7 @@ internal static class SharedFixtureState
         new GenericFactory(typeof(ICollection<>), typeof(ListFactory<>)),
         new GenericFactory(typeof(IList<>), typeof(ListFactory<>)),
         new GenericFactory(typeof(IDictionary<,>), typeof(DictionaryFactory<,>)),
+        new GenericFactory(typeof(IQueryable<>), typeof(QueryableFactory<>)),
 
         new GenericFactory(typeof(IReadOnlyList<>), typeof(ListFactory<>)),
         new GenericFactory(typeof(IReadOnlyCollection<>), typeof(ListFactory<>)),
