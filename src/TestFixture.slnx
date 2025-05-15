@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/.global/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="icon.jpg" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="TestFixture.Tests/TestFixture.Tests.csproj" />
+  <Project Path="TestFixture/TestFixture.csproj" />
+</Solution>
