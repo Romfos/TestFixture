@@ -1,6 +1,6 @@
 namespace TestFixture.Services;
 
-public sealed class RandomService : IRandomService
+internal sealed class RandomService : IRandomService
 {
     private readonly Random random = new();
 
