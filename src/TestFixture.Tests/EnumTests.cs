@@ -16,9 +16,7 @@ public sealed class EnumTests
     [TestMethod]
     public void EnumTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(2)
-            .Build();
+        var fixture = TestFixtureFactory.Create(2);
 
         var actual = fixture.Create<TestEnum>();
 

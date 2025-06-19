@@ -18,9 +18,7 @@ public sealed class ClassTests
     [TestMethod]
     public void ClassWithSingleConstructor()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2);
 
         var actual = fixture.Create<Class1>();
     }
@@ -42,9 +40,7 @@ public sealed class ClassTests
     [TestMethod]
     public void ClassWithMultipleConstructor()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2);
 
         var actual = fixture.Create<Class2>();
     }
@@ -69,9 +65,7 @@ public sealed class ClassTests
     [TestMethod]
     public void ClassWithNestedClass()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2);
 
         var actual = fixture.Create<Class3>();
     }
@@ -90,9 +84,7 @@ public sealed class ClassTests
             Foo = "x"
         };
 
-        var fixture = new TestFixtureBuilder()
-            .With("x")
-            .Build();
+        var fixture = TestFixtureFactory.Create("x");
 
         var actual = fixture.Create<Class5>();
 

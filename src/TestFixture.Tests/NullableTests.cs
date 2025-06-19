@@ -9,9 +9,7 @@ public sealed class NullableTests
     [TestMethod]
     public void NullableTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(123)
-            .Build();
+        var fixture = TestFixtureFactory.Create(123);
 
         var actual = fixture.Create<int?>();
 

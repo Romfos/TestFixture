@@ -10,10 +10,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void Int32Test()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<int>();
 
         Assert.AreEqual(expected, actual);
@@ -23,10 +20,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void GuidTest()
     {
         var expected = Guid.NewGuid();
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<Guid>();
 
         Assert.AreEqual(expected, actual);
@@ -36,10 +30,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void StringTest()
     {
         var expected = "abcd";
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<string>();
 
         Assert.AreEqual(expected, actual);
@@ -49,10 +40,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void Int64Test()
     {
         var expected = long.MinValue;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<long>();
 
         Assert.AreEqual(expected, actual);
@@ -62,10 +50,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void DateTimeTest()
     {
         var expected = DateTime.UtcNow;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<DateTime>();
 
         Assert.AreEqual(expected, actual);
@@ -75,10 +60,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void TimeSpanTest()
     {
         var expected = DateTime.UtcNow;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<TimeSpan>();
 
         Assert.AreEqual(expected.TimeOfDay, actual);
@@ -88,10 +70,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void BooleanTest()
     {
         var expected = 1;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<bool>();
 
         Assert.IsTrue(actual);
@@ -101,10 +80,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void UriTest()
     {
         var expected = Guid.NewGuid();
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<Uri>();
 
         Assert.AreEqual(new Uri($"http://{expected}.com"), actual);
@@ -114,10 +90,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void ByteTest()
     {
         byte expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create((int)expected);
         var actual = fixture.Create<byte>();
 
         Assert.AreEqual(expected, actual);
@@ -127,10 +100,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void CharTest()
     {
         var expected = (char)123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create((int)expected);
         var actual = fixture.Create<char>();
 
         Assert.AreEqual(expected, actual);
@@ -140,10 +110,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void DecimalTest()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<decimal>();
 
         Assert.AreEqual(expected, actual);
@@ -153,10 +120,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void DoubleTest()
     {
         var expected = 123d;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<double>();
 
         Assert.AreEqual(expected, actual);
@@ -166,10 +130,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void FloatTest()
     {
         var expected = 123d;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<float>();
 
         Assert.AreEqual((float)expected, actual);
@@ -179,10 +140,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void SByteTest()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<sbyte>();
 
         Assert.AreEqual((sbyte)expected, actual);
@@ -192,10 +150,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void ShortTest()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<short>();
 
         Assert.AreEqual((short)expected, actual);
@@ -205,10 +160,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void UInt32Test()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<uint>();
 
         Assert.AreEqual((uint)expected, actual);
@@ -218,10 +170,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void UInt64Test()
     {
         var expected = 123L;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<ulong>();
 
         Assert.AreEqual((ulong)expected / 2, actual);
@@ -231,10 +180,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void UInt16Test()
     {
         var expected = 123;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<ushort>();
 
         Assert.AreEqual((ushort)expected, actual);
@@ -246,10 +192,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void DateOnlyTest()
     {
         var expected = DateTime.UtcNow;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<DateOnly>();
 
         Assert.AreEqual(DateOnly.FromDateTime(expected), actual);
@@ -259,10 +202,7 @@ public sealed class PrimitiveTypesFactoryTests
     public void TimeOnlyTest()
     {
         var expected = DateTime.UtcNow;
-        var fixture = new TestFixtureBuilder()
-            .With(expected)
-            .Build();
-
+        var fixture = TestFixtureFactory.Create(expected);
         var actual = fixture.Create<TimeOnly>();
 
         Assert.AreEqual(TimeOnly.FromDateTime(expected), actual);

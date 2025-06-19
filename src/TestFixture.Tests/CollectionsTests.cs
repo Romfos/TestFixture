@@ -15,9 +15,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ArrayTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<int[]>();
 
@@ -27,9 +25,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ListTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<List<int>>();
 
@@ -39,9 +35,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IReadOnlyListTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IReadOnlyList<int>>();
 
@@ -51,9 +45,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IReadOnlyCollectionTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IReadOnlyCollection<int>>();
 
@@ -63,9 +55,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void QueueTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<Queue<int>>();
 
@@ -75,9 +65,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void StackTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<Stack<int>>();
 
@@ -87,9 +75,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IListTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IList<int>>();
 
@@ -99,9 +85,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IEnumerableTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IEnumerable<int>>();
 
@@ -111,9 +95,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IQueryableTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IQueryable<int>>();
 
@@ -124,9 +106,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public async Task IAsyncEnumerableEnumerableTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = await fixture.Create<IAsyncEnumerable<int>>().ToListAsync();
 
@@ -136,9 +116,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ICollectionTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ICollection<int>>();
 
@@ -148,9 +126,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void DictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<Dictionary<int, int>>();
 
@@ -165,9 +141,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IDictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<IDictionary<int, int>>();
 
@@ -182,9 +156,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IReadOnlyDictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<IReadOnlyDictionary<int, int>>();
 
@@ -199,9 +171,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ConcurrentDictionary()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<ConcurrentDictionary<int, int>>();
 
@@ -216,9 +186,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ImmutableArrayTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ImmutableArray<int>>();
 
@@ -228,9 +196,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ImmutableListTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ImmutableList<int>>();
 
@@ -240,9 +206,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ImmutableDictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<ImmutableDictionary<int, int>>();
 
@@ -257,9 +221,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ImmutableQueueTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ImmutableQueue<int>>();
 
@@ -269,9 +231,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IImmutableListTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IImmutableList<int>>();
 
@@ -281,9 +241,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IImmutableDictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<IImmutableDictionary<int, int>>();
 
@@ -298,9 +256,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void IImmutableQueueTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<IImmutableQueue<int>>();
 
@@ -310,9 +266,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ConcurrentBagTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ConcurrentBag<int>>();
 
@@ -322,9 +276,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ConcurrentQueueFactoryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ConcurrentQueue<int>>();
 
@@ -334,9 +286,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void ConcurrentStackTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<ConcurrentStack<int>>();
 
@@ -347,9 +297,7 @@ public sealed class CollectionsTests
     [TestMethod]
     public void FrozenDictionaryTest()
     {
-        var fixture = new TestFixtureBuilder()
-            .With(1, 2, 3, 4, 5, 6)
-            .Build();
+        var fixture = TestFixtureFactory.Create(1, 2, 3, 4, 5, 6);
 
         var actual = fixture.Create<FrozenDictionary<int, int>>();
 
