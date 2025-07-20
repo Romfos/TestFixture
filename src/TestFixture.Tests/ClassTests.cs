@@ -21,6 +21,8 @@ public sealed class ClassTests
         var fixture = TestFixtureFactory.Create(1, 2);
 
         var actual = fixture.Create<Class1>();
+
+        Assert.IsNotNull(actual);
     }
 
     private class Class2
@@ -43,6 +45,8 @@ public sealed class ClassTests
         var fixture = TestFixtureFactory.Create(1, 2);
 
         var actual = fixture.Create<Class2>();
+
+        Assert.IsNotNull(actual);
     }
 
     private class Class3
