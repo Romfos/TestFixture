@@ -43,19 +43,27 @@ https://www.nuget.org/packages/TestFixture
 
 - Collections:
 
-| Generic               | Immutable               | Concurrent              | Frozen (.NET 8+)    |
-|-----------------------|-------------------------|-------------------------|---------------------|
-| Array[]               | ImmutableArray<>        | ConcurrentDictionary<,> | FrozenDictionary<,> |
-| List<>                | ImmutableList<>         | ConcurrentBag<>         |                     |
-| Dictionary<,>         | ImmutableDictionary<,>  | ConcurrentQueue<>       |                     |
-| Queue<>               | ImmutableQueue<>        | ConcurrentStack<>       |                     |
-| Stack<>               | IImmutableList<>        |                         |                     |
-| IEnumerable<>         | IImmutableQueue<>       |                         |                     |
-| ICollection<>         | IImmutableDictionary<,> |                         |                     |
-| IList<>               |                         |                         |                     |
-| IDictionary<,>        |                         |                         |                     |
-| IAsyncEnumerable<>    |                         |                         |                     |
-| IReadOnlyList<>       |                         |                         |                     |
-| IReadOnlyCollection<> |                         |                         |                     |
+| Generic               | Immutable                    | Concurrent              | Frozen (.NET 8+)    |
+|-----------------------|------------------------------|-------------------------|---------------------|
+| Array[]               | ImmutableArray<>             | ConcurrentBag<>         | FrozenDictionary<,> |
+| Collection<>          | ImmutableDictionary<,>       | ConcurrentDictionary<,> | FrozenSet<>         |
+| Dictionary<,>         | ImmutableHashSet<>           | ConcurrentQueue<>       |                     |
+| HashSet<>             | ImmutableList<>              | ConcurrentStack<>       |                     |
+| ICollection<>         | ImmutableQueue<>             |                         |                     |
+| IDictionary<,>        | ImmutableSortedDictionary<,> |                         |                     |
+| IEnumerable<>         | ImmutableSortedSet<>         |                         |                     |
+| IAsyncEnumerable<>    | ImmutableStack<>             |                         |                     |
+| IList<>               | IImmutableDictionary<,>      |                         |                     |
+| LinkedList<>          | IImmutableList<>             |                         |                     |
+| List<>                | IImmutableQueue<>            |                         |                     |
+| Queue<>               | IImmutableStack<>            |                         |                     |
+| ReadOnlyCollection<>  |                              |                         |                     |
+| SortedDictionary<,>   |                              |                         |                     |
+| SortedList<,>         |                              |                         |                     |
+| SortedSet<>           |                              |                         |                     |
+| Stack<>               |                              |                         |                     |
+| IReadOnlyCollection<> |                              |                         |                     |
+| IReadOnlyList<>       |                              |                         |                     |
+| IQueryable<>          |                              |                         |                     |
 
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)
