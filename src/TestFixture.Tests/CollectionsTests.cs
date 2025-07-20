@@ -308,6 +308,14 @@ public sealed class CollectionsTests
             { Key: 5, Value: 6 }
             ]);
     }
+
+    [TestMethod]
+    public void FrozenSetTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+        var actual = fixture.Create<FrozenSet<int>>();
+        CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, actual.ToArray());
+    }
 #endif
 
     [TestMethod]

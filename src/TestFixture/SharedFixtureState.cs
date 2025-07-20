@@ -98,6 +98,7 @@ internal static class SharedFixtureState
 
 #if NET        
         new GenericFactory(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
+        new GenericFactory(typeof(FrozenSet<>), typeof(FrozenSetFactory<>)),
 #endif
     };
 }
