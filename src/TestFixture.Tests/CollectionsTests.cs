@@ -349,4 +349,36 @@ public sealed class CollectionsTests
         var actual = fixture.Create<SortedList<int, int>>();
         CollectionAssert.AreEqual(new[] { (1, 2), (3, 6), (5, 4) }, actual.Select(kv => (kv.Key, kv.Value)).ToArray());
     }
+
+    [TestMethod]
+    public void ImmutableHashSetTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+        var actual = fixture.Create<ImmutableHashSet<int>>();
+        CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, actual.ToArray());
+    }
+
+    [TestMethod]
+    public void ImmutableSortedSetTest()
+    {
+        var fixture = TestFixtureFactory.Create(3, 1, 2);
+        var actual = fixture.Create<ImmutableSortedSet<int>>();
+        CollectionAssert.AreEqual(new[] { 1, 2, 3 }, actual.ToArray());
+    }
+
+    [TestMethod]
+    public void ImmutableSortedDictionaryTest()
+    {
+        var fixture = TestFixtureFactory.Create(3, 6, 1, 2, 5, 4);
+        var actual = fixture.Create<ImmutableSortedDictionary<int, int>>();
+        CollectionAssert.AreEqual(new[] { (1, 2), (3, 6), (5, 4) }, actual.Select(kv => (kv.Key, kv.Value)).ToArray());
+    }
+
+    [TestMethod]
+    public void ImmutableStackTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+        var actual = fixture.Create<ImmutableStack<int>>();
+        CollectionAssert.AreEqual(new[] { 3, 2, 1 }, actual.ToArray());
+    }
 }

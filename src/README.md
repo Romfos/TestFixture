@@ -34,26 +34,27 @@ public void ExampleTest()
 
 - Collections:
 
-| Generic               | Immutable               | Concurrent              | Frozen (.NET 8+)    |
-|-----------------------|-------------------------|-------------------------|---------------------|
-| Array[]               | ImmutableArray<>        | ConcurrentDictionary<,> | FrozenDictionary<,> |
-| List<>                | ImmutableList<>         | ConcurrentBag<>         |                     |
-| Dictionary<,>         | ImmutableDictionary<,>  | ConcurrentQueue<>       |                     |
-| Queue<>               | ImmutableQueue<>        | ConcurrentStack<>       |                     |
-| Stack<>               | IImmutableList<>        |                         |                     |
-| HashSet<>             | IImmutableQueue<>       |                         |                     |
-| SortedSet<>           | IImmutableDictionary<,> |                         |                     |
-| LinkedList<>          |                         |                         |                     |
-| SortedDictionary<,>   |                         |                         |                     |
-| SortedList<,>         |                         |                         |                     |
-| IEnumerable<>         |                         |                         |                     |
-| ICollection<>         |                         |                         |                     |
-| IQueryable<>          |                         |                         |                     |
-| IList<>               |                         |                         |                     |
-| IDictionary<,>        |                         |                         |                     |
-| IAsyncEnumerable<>    |                         |                         |                     |
-| IReadOnlyList<>       |                         |                         |                     |
-| IReadOnlyCollection<> |                         |                         |                     |
+| Generic               | Immutable                        | Concurrent              | Frozen (.NET 8+)    |
+|-----------------------|-----------------------------------|-------------------------|---------------------|
+| Array[]               | ImmutableArray<>                  | ConcurrentDictionary<,> | FrozenDictionary<,> |
+| List<>                | ImmutableList<>                   | ConcurrentBag<>         |                     |
+| Dictionary<,>         | ImmutableDictionary<,>            | ConcurrentQueue<>       |                     |
+| Queue<>               | ImmutableQueue<>                  | ConcurrentStack<>       |                     |
+| Stack<>               | IImmutableList<>                  |                         |                     |
+| HashSet<>             | IImmutableQueue<>                 |                         |                     |
+| SortedSet<>           | IImmutableDictionary<,>           |                         |                     |
+| LinkedList<>          | ImmutableHashSet<>                |                         |                     |
+| SortedDictionary<,>   | ImmutableSortedSet<>              |                         |                     |
+| SortedList<,>         | ImmutableSortedDictionary<,>      |                         |                     |
+|                       | ImmutableStack<>                  |                         |                     |
+| IEnumerable<>         |                                   |                         |                     |
+| ICollection<>         |                                   |                         |                     |
+| IQueryable<>          |                                   |                         |                     |
+| IList<>               |                                   |                         |                     |
+| IDictionary<,>        |                                   |                         |                     |
+| IAsyncEnumerable<>    |                                   |                         |                     |
+| IReadOnlyList<>       |                                   |                         |                     |
+| IReadOnlyCollection<> |                                   |                         |                     |
 
 
 - Composition of supported types in class, record, struct (inject method: first constructor, public set properties, public fields)

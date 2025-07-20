@@ -87,6 +87,10 @@ internal static class SharedFixtureState
         new GenericFactory(typeof(ImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactory(typeof(ImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
         new GenericFactory(typeof(ImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
+        new GenericFactory(typeof(ImmutableHashSet<>), typeof(ImmutableHashSetFactory<>)),
+        new GenericFactory(typeof(ImmutableSortedSet<>), typeof(ImmutableSortedSetFactory<>)),
+        new GenericFactory(typeof(ImmutableSortedDictionary<,>), typeof(ImmutableSortedDictionaryFactory<,>)),
+        new GenericFactory(typeof(ImmutableStack<>), typeof(ImmutableStackFactory<>)),
 
         new GenericFactory(typeof(IImmutableList<>), typeof(ImmutableListFactory<>)),
         new GenericFactory(typeof(IImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
