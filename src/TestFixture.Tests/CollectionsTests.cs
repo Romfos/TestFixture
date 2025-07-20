@@ -309,4 +309,44 @@ public sealed class CollectionsTests
             ]);
     }
 #endif
+
+    [TestMethod]
+    public void HashSetTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+        var actual = fixture.Create<HashSet<int>>();
+        CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, actual.ToArray());
+    }
+
+    [TestMethod]
+    public void SortedSetTest()
+    {
+        var fixture = TestFixtureFactory.Create(3, 1, 2);
+        var actual = fixture.Create<SortedSet<int>>();
+        CollectionAssert.AreEqual(new[] { 1, 2, 3 }, actual.ToArray());
+    }
+
+    [TestMethod]
+    public void LinkedListTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+        var actual = fixture.Create<LinkedList<int>>();
+        CollectionAssert.AreEqual(new[] { 1, 2, 3 }, actual.ToArray());
+    }
+
+    [TestMethod]
+    public void SortedDictionaryTest()
+    {
+        var fixture = TestFixtureFactory.Create(3, 6, 1, 2, 5, 4);
+        var actual = fixture.Create<SortedDictionary<int, int>>();
+        CollectionAssert.AreEqual(new[] { (1, 2), (3, 6), (5, 4) }, actual.Select(kv => (kv.Key, kv.Value)).ToArray());
+    }
+
+    [TestMethod]
+    public void SortedListTest()
+    {
+        var fixture = TestFixtureFactory.Create(3, 6, 1, 2, 5, 4);
+        var actual = fixture.Create<SortedList<int, int>>();
+        CollectionAssert.AreEqual(new[] { (1, 2), (3, 6), (5, 4) }, actual.Select(kv => (kv.Key, kv.Value)).ToArray());
+    }
 }

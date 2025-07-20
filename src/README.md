@@ -41,8 +41,13 @@ public void ExampleTest()
 | Dictionary<,>         | ImmutableDictionary<,>  | ConcurrentQueue<>       |                     |
 | Queue<>               | ImmutableQueue<>        | ConcurrentStack<>       |                     |
 | Stack<>               | IImmutableList<>        |                         |                     |
-| IEnumerable<>         | IImmutableQueue<>       |                         |                     |
-| ICollection<>         | IImmutableDictionary<,> |                         |                     |
+| HashSet<>             | IImmutableQueue<>       |                         |                     |
+| SortedSet<>           | IImmutableDictionary<,> |                         |                     |
+| LinkedList<>          |                         |                         |                     |
+| SortedDictionary<,>   |                         |                         |                     |
+| SortedList<,>         |                         |                         |                     |
+| IEnumerable<>         |                         |                         |                     |
+| ICollection<>         |                         |                         |                     |
 | IQueryable<>          |                         |                         |                     |
 | IList<>               |                         |                         |                     |
 | IDictionary<,>        |                         |                         |                     |
