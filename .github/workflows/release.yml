@@ -20,7 +20,7 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Pack nuget package
-        run: dotnet pack ./src/TestFixture/TestFixture.csproj -p:Version=${{ inputs.Version }} -o "./build"
+        run: dotnet pack ./src/TestFixture/TestFixture.csproj -p:Version=${{ inputs.Version }} -o "./build" -p:CI=true
 
       - name: Push to nuget
         run: dotnet nuget push .\build\*.nupkg -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json

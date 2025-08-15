@@ -12,8 +12,16 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.jpg</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>  
+  </PropertyGroup>
 
+  <PropertyGroup Condition="'$(CI)' == 'True'">
+    <!--Package symbols and Source Link settings -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  
   <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
     <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
