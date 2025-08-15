@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;
