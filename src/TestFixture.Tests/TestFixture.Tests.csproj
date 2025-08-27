@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MSTest" Version="3.10.2" />
+    <PackageReference Include="MSTest" Version="3.10.3" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
