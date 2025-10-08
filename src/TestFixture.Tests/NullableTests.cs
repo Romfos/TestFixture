@@ -12,6 +12,6 @@ public sealed class NullableTests
 
         var actual = fixture.Create<int?>();
 
-        Assert.IsTrue(actual is 123);
+        Assert.AreEqual(123, actual);
     }
 }
