@@ -19,7 +19,7 @@ jobs:
         run: dotnet build ./src/TestFixture.slnx
 
       - name: Test
-        run: dotnet test --no-build --no-restore ./src/TestFixture.slnx
+        run: dotnet test --no-build --no-restore --solution ./src/TestFixture.slnx --no-progress
 
       - name: Format
         run: dotnet format --verify-no-changes --no-restore ./src/TestFixture.slnx
