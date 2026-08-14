@@ -1,13 +1,14 @@
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 using TestFixture.Factories.Collections.Concurrent;
 using TestFixture.Factories.Collections.Immutable;
-using TestFixture.Services;
 using TestFixture.Factories.Primitives;
 using TestFixture.Factories.System;
 using TestFixture.GenericFactories;
+using TestFixture.Services;
 
 #if NET
 using System.Collections.Frozen;
@@ -58,6 +59,7 @@ internal static class SharedFixtureState
 
         new ArrayGenericFactory(),
         new GenericFactory(typeof(List<>), typeof(ListFactory<>)),
+        new GenericFactory(typeof(Collection<>), typeof(CollectionFactory<>)),
         new GenericFactory(typeof(Dictionary<,>), typeof(DictionaryFactory<,>)),
         new GenericFactory(typeof(Queue<>), typeof(QueueFactory<>)),
         new GenericFactory(typeof(Stack<>), typeof(StackFactory<>)),

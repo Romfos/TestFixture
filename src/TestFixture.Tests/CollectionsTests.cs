@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
 using TestFixture.Tests.Services;
 
 namespace TestFixture.Tests;
@@ -22,6 +23,26 @@ public sealed class CollectionsTests
         var fixture = TestFixtureFactory.Create(1, 2, 3);
 
         var actual = fixture.Create<List<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
+    }
+
+    [TestMethod]
+    public void CollectionTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+
+        var actual = fixture.Create<Collection<int>>();
+
+        Assert.IsTrue(actual is [1, 2, 3]);
+    }
+
+    [TestMethod]
+    public void ReadOnlyCollectionTest()
+    {
+        var fixture = TestFixtureFactory.Create(1, 2, 3);
+
+        var actual = fixture.Create<ReadOnlyCollection<int>>();
 
         Assert.IsTrue(actual is [1, 2, 3]);
     }
