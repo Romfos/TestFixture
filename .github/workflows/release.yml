@@ -9,6 +9,8 @@ run-name: Release ${{ inputs.Version }}
 
 jobs:
   release:
+    permissions:
+      id-token: write
     runs-on: windows-latest
     steps:
       - name: Check out repository
@@ -22,5 +24,11 @@ jobs:
       - name: Pack nuget package
         run: dotnet pack ./src/TestFixture/TestFixture.csproj -p:Version=${{ inputs.Version }} -o "./build" -p:CI=true
 
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Push to nuget
-        run: dotnet nuget push .\build\*.nupkg -k ${{ secrets.NUGET }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push .\build\*.nupkg -k ${{ steps.login.outputs.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
