@@ -1,5 +1,3 @@
-#if NET
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Frozen;
 using TestFixture.Tests.Services;
 
@@ -29,4 +27,3 @@ public sealed class FrozenCollectionsTests
         CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, actual);
     }
 }
-#endif

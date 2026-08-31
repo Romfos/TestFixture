@@ -1,4 +1,3 @@
-#if NET
 using System.Collections.Frozen;
 
 namespace TestFixture.Factories.Collections.Frozen;
@@ -11,4 +10,3 @@ internal sealed class FrozenDictionaryFactory<TKey, TValue> : IFactory
         return fixture.Create<KeyValuePair<TKey, TValue>>(3).ToFrozenDictionary(x => x.Key, x => x.Value);
     }
 }
-#endif

@@ -6,11 +6,7 @@ internal sealed class RandomService : IRandomService
 
     public int Int32 => random.Next();
 
-#if NET
     public long Int64 => random.NextInt64();
-#else
-    public long Int64 => random.Next();
-#endif
 
     public double Double => random.NextDouble();
 

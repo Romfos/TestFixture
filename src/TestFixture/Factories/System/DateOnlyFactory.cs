@@ -1,5 +1,3 @@
-#if NET
-
 using TestFixture.Services;
 
 namespace TestFixture.Factories.System;
@@ -11,5 +9,3 @@ internal sealed class DateOnlyFactory : IFactory
         return DateOnly.FromDateTime(fixture.Create<IRandomService>().DateTime);
     }
 }
-
-#endif

@@ -1,4 +1,3 @@
-#if NET
 using System.Collections.Frozen;
 
 namespace TestFixture.Factories.Collections.Frozen;
@@ -10,4 +9,3 @@ internal sealed class FrozenSetFactory<T> : IFactory
         return fixture.Create<T>(3).ToFrozenSet();
     }
 }
-#endif

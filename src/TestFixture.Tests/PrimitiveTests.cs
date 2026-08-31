@@ -185,7 +185,6 @@ public sealed class PrimitiveTypesFactoryTests
         Assert.AreEqual((ushort)expected, actual);
     }
 
-#if NET
 
     [TestMethod]
     public void DateOnlyTest()
@@ -206,6 +205,4 @@ public sealed class PrimitiveTypesFactoryTests
 
         Assert.AreEqual(TimeOnly.FromDateTime(expected), actual);
     }
-
-#endif
 }

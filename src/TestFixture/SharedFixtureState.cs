@@ -1,19 +1,16 @@
 using System.Collections.Concurrent;
+using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using TestFixture.Factories;
 using TestFixture.Factories.Collections;
 using TestFixture.Factories.Collections.Concurrent;
+using TestFixture.Factories.Collections.Frozen;
 using TestFixture.Factories.Collections.Immutable;
 using TestFixture.Factories.Primitives;
 using TestFixture.Factories.System;
 using TestFixture.GenericFactories;
 using TestFixture.Services;
-
-#if NET
-using System.Collections.Frozen;
-using TestFixture.Factories.Collections.Frozen;
-#endif
 
 namespace TestFixture;
 
@@ -46,10 +43,8 @@ internal static class SharedFixtureState
         [typeof(TimeSpan)] = new TimeSpanFactory(),
         [typeof(DateTime)] = new DateTimeFactory(),
         [typeof(DateTimeOffset)] = new DateTimeOffsetFactory(),
-#if NET
         [typeof(TimeOnly)] = new TimeOnlyFactory(),
         [typeof(DateOnly)] = new DateOnlyFactory(),
-#endif
     };
 
     internal static readonly IGenericFactory[] genericFactories =
@@ -98,9 +93,7 @@ internal static class SharedFixtureState
         new GenericFactory(typeof(IImmutableDictionary<,>), typeof(ImmutableDictionaryFactory<,>)),
         new GenericFactory(typeof(IImmutableQueue<>), typeof(ImmutableQueueFactory<>)),
 
-#if NET        
         new GenericFactory(typeof(FrozenDictionary<,>), typeof(FrozenDictionaryFactory<,>)),
         new GenericFactory(typeof(FrozenSet<>), typeof(FrozenSetFactory<>)),
-#endif
     };
 }
