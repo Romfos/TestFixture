@@ -12,6 +12,7 @@ jobs:
         with:
           dotnet-version: |
             10.0.x
+            11.0.x
 
       - name: Build
         run: dotnet build ./src/TestFixture.slnx
