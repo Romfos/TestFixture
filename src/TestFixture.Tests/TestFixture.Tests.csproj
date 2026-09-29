@@ -7,8 +7,12 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net11.0' ">
+    <Features>$(Features);runtime-async=on</Features>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="MSTest" Version="4.4.0" />
+    <PackageReference Include="MSTest" Version="4.4.1" />
   </ItemGroup>
   
   <ItemGroup>
